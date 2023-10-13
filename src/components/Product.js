@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Product = ({ image, id, name, price, slug, wholesale_price }) => {
+  // console.log("🚀 ~ file: Product.js:8 ~ Product ~ image:", image)
   // console.log(wholesale_price);
   const demoimage =
     "https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg";
@@ -12,11 +13,7 @@ const Product = ({ image, id, name, price, slug, wholesale_price }) => {
   return (
     <Wrapper>
       <div className="container">
-        <Link
-          to={
-            // {`/products/${slug}`}
-            `/products/${slug}/abc/0`
-          }>
+        <Link to={`/products/${slug}/abc/0`}>
           <img
             src={
               image === "" || image === undefined || image === null
@@ -26,10 +23,7 @@ const Product = ({ image, id, name, price, slug, wholesale_price }) => {
             alt={name}
           />
         </Link>
-        <Link
-          to={`/products/${slug}/abc/0`}
-          // {`/products/${slug}/abc/0`}
-          className="link">
+        <Link to={`/products/${slug}/abc/0`} className="link">
           <FaSearch />
         </Link>
       </div>
@@ -52,7 +46,7 @@ const Wrapper = styled.article`
   img {
     width: 100%;
     display: block;
-    ${'' /* object-fit: cover; */}
+    ${"" /* object-fit: cover; */}
     border-radius: var(--radius);
     transition: var(--transition);
   }

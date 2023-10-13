@@ -8,13 +8,14 @@ import CartTotals from "./CartTotals";
 
 const CartContent = () => {
   const { cart, clearCart } = useCartContext();
+  // console.log("🚀 ~ file: CarContent.js:11 ~ CartContent ~ cart:", cart)
   return (
     <Wrapper className="section section-center">
       {/* heading for cart screen tables  */}
       <CartColumns />
       {/* cart items */}
       {cart.map((item) => {
-        console.log("cart item", item);
+      {/* console.log("################################",JSON.stringify( item,null,2)) */}
         return <CartItem key={item.id} {...item} />;
       })}
       <hr />
@@ -25,8 +26,7 @@ const CartContent = () => {
         <button
           type="button"
           className="link-btn clear-btn"
-          onClick={clearCart}
-        >
+          onClick={clearCart}>
           clear shopping cart
         </button>
       </div>
@@ -46,7 +46,7 @@ const Wrapper = styled.section`
     border-color: transparent;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
-    background: var(--clr-primary-5);
+    background: var(--clr-primary-indianred);
     color: var(--clr-white);
     border-radius: var(--radius);
     letter-spacing: var(--spacing);

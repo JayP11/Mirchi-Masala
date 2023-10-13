@@ -101,7 +101,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr;
   align-items: center;
-  gap: 20px;
+  ${"" /* gap: 20px; */}
   width: 225px;
 
   .cart-btn {
@@ -126,8 +126,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: -10px;
     right: -16px;
-    ${"" /* background: var(--clr-primary-5); */}
-    background: #B04848;
+    background: #b04848;
     width: 16px;
     height: 16px;
     display: flex;
@@ -152,14 +151,14 @@ const Wrapper = styled.div`
     }
   }
   .dropdown ul {
-    border-radius: 3px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 31%);
     height: auto;
     left: auto;
-    right: 20%;
+    right: 10%;
     position: absolute;
     top: 60px;
-    width: 276px;
+    width: 200px;
     background-color: #fff;
     z-index: 999;
     display: flex;
@@ -169,13 +168,16 @@ const Wrapper = styled.div`
     visibility: hidden;
     transition: all 0.5s ease;
     li {
-      border-bottom: 1px solid #d2d2d2;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-top: 1px solid #d2d2d2;
       padding: 10px 0 10px 10px;
       a {
         font-size: 18px;
         display: flex;
         align-items: center;
-        color: #b1b1b1;
+        ${"" /* color: #b1b1b1; */}
+        color: #111;
         font-weight: 300;
         svg {
           margin-right: 5px;
@@ -330,7 +332,7 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button.btn-login {
-    background: var(--clr-heading-main);
+    ${"" /* background: var(--clr-heading-main); */}
     color: var(--clr-primary-1);
     transition: all 0.5s ease;
   }
@@ -340,7 +342,8 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button:hover {
-    background: var(--clr-heading-main);
+    ${"" /* background: var(--clr-heading-main); */}
+    background: var(--clr-primary-indianred);
     color: var(--clr-primary-1);
     transition: all 0.5s ease;
   }

@@ -136,16 +136,16 @@ const MyOrders = () => {
   };
   return (
     <Wrapper>
-      <div class="wallet_inside">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-          <div class="notification_head">
+      <div className="wallet_inside">
+        <div className="col-md-12 col-lg-12 col-sm-12 col-12">
+          <div className="notification_head">
             <h3>My Order</h3>
           </div>
         </div>
-        <div class="col-lg-9 order-lg-last dashboard-content">
-          <div class="order_history">
-            <div class="table table-responsive-sm table-responsive-md table-responsive">
-              <table class="table table-hover">
+        <div className="col-lg-9 order-lg-last dashboard-content">
+          <div className="order_history">
+            <div className="table table-responsive-sm table-responsive-md table-responsive">
+              <table className="table table-hover">
                 <thead>
                   <tr>
                     <th>Order Date</th>
@@ -164,22 +164,22 @@ const MyOrders = () => {
                           <td>{item.order_number}</td>
                           <td>{item.formated_total_price}</td>
                           {item.order_status_id == "1" ? (
-                            <td class="cancelled_order">Waiting</td>
+                            <td className="cancelled_order">Waiting</td>
                           ) : item.order_status_id == "2" ? (
-                            <td class="cancelled_order">Preparing</td>
+                            <td className="cancelled_order">Preparing</td>
                           ) : item.order_status_id == "3" ? (
-                            <td class="cancelled_order">On the way</td>
+                            <td className="cancelled_order">On the way</td>
                           ) : item.order_status_id == "4" ? (
-                            <td class="delevered_order">Completed</td>
+                            <td className="delevered_order">Completed</td>
                           ) : item.order_status_id == "5" ? (
-                            <td class="cancelled_order">Cancelled</td>
+                            <td className="cancelled_order">Cancelled</td>
                           ) : item.order_status_id == "6" ? (
-                            <td class="cancelled_order">Returned</td>
+                            <td className="cancelled_order">Returned</td>
                           ) : (
                             ""
                           )}
                           <td>
-                            <div class="actions_btns_list">
+                            <div className="actions_btns_list">
                               <a
                                 href="javascript:void(0);"
                                 onClick={() =>
@@ -187,7 +187,7 @@ const MyOrders = () => {
                                 }
                                 title="View order"
                               >
-                                <i class="">
+                                <i className="">
                                   <FaFileInvoice />
                                 </i>
                               </a>
@@ -198,7 +198,7 @@ const MyOrders = () => {
                                 }
                                 title="Cancel order"
                               >
-                                <i class="">
+                                <i className="">
                                   <FaWindowClose />
                                 </i>
                               </a>
@@ -207,7 +207,7 @@ const MyOrders = () => {
                                 title="Download invoice"
                                 onClick={() => mDownloadInvoice(item.id)}
                               >
-                                <i class="">
+                                <i className="">
                                   <FaDownload />
                                 </i>
                               </a>
@@ -230,15 +230,15 @@ const MyOrders = () => {
         contentLabel="Example Modal"
       >
         <Innermodal>
-          <button className="close-button" onClick={closeModal}>
+          <button classNameName="close-button" onClick={closeModal}>
             X
           </button>
-          <div className="checkout-page contact-page">
+          <div classNameName="checkout-page contact-page">
             {orderDetailsObject ? (
-              <div className="cart-table-container">
-                <ul className="checkout-progress-bar">
+              <div classNameName="cart-table-container">
+                <ul classNameName="checkout-progress-bar">
                   <li
-                    className={
+                    classNameName={
                       orderDetailsObject.order_status_id &&
                       orderDetailsObject.order_status_id == "1"
                         ? "one active"
@@ -270,11 +270,11 @@ const MyOrders = () => {
                     <span>Completed</span>{" "}
                   </li>
                 </ul>
-                <div className="row">
-                  <div className="col-md-6">
+                <div classNameName="row">
+                  <div classNameName="col-md-6">
                     <h3>
                       Order Number:{" "}
-                      <span className="red-color">
+                      <span classNameName="red-color">
                         {" "}
                         {orderDetailsObject &&
                         orderDetailsObject &&
@@ -285,7 +285,7 @@ const MyOrders = () => {
                     </h3>
                     <h4>Delivery Address</h4>
                     <p>
-                      <span className="bold-fonts">Order Status: </span>
+                      <span classNameName="bold-fonts">Order Status: </span>
                       {orderDetailsObject.order_status_id &&
                       orderDetailsObject.order_status_id == "1"
                         ? "Waiting"
@@ -309,7 +309,7 @@ const MyOrders = () => {
                     <p>
                       {" "}
                       <span
-                        className="bold-fonts"
+                        classNameName="bold-fonts"
                         style={{ fontWeight: "bold" }}
                       >
                         Address:{" "}
@@ -327,18 +327,18 @@ const MyOrders = () => {
                       {orderDetailsObject.shipping_country_name}
                     </p>
                     <p>
-                      <span className="bold-fonts">Date: </span>{" "}
+                      <span classNameName="bold-fonts">Date: </span>{" "}
                       {orderDetailsObject.created_at}
                     </p>
                     <p>
-                      <span className="bold-fonts">Time Slot: </span> 08:00AM -
+                      <span classNameName="bold-fonts">Time Slot: </span> 08:00AM -
                       08:00PM
                     </p>
                   </div>
                 </div>
                 <div>
-                  <div className="card card_bg_color">
-                    <div className="card-header"> Category Name 01 </div>
+                  <div classNameName="card card_bg_color">
+                    <div classNameName="card-header"> Category Name 01 </div>
                   </div>
                   {orderDetailsObject &&
                   orderDetailsObject.order_lines &&
@@ -346,14 +346,14 @@ const MyOrders = () => {
                     ? orderDetailsObject.order_lines.map((item, index) => {
                         return (
                           <div>
-                            <table className="table">
+                            <table classNameName="table">
                               <tbody>
                                 <tr>
-                                  <td className="product-col">
-                                    <figure className="product-image-container">
+                                  <td classNameName="product-col">
+                                    <figure classNameName="product-image-container">
                                       <a
                                         href="javascript:void(0)"
-                                        className="product-image"
+                                        classNameName="product-image"
                                       >
                                         {" "}
                                         <img
@@ -362,42 +362,42 @@ const MyOrders = () => {
                                         />{" "}
                                       </a>
                                     </figure>
-                                    <h2 className="product-title">
+                                    <h2 classNameName="product-title">
                                       <p>Brand Name</p>
                                       <a href="javascript:void(0)">
                                         {item.product_name}
                                       </a>
                                     </h2>
-                                    <div className="ratings-container">
-                                      <div className="product-ratings">
+                                    <div classNameName="ratings-container">
+                                      <div classNameName="product-ratings">
                                         {" "}
-                                        <span className="ratings">
+                                        <span classNameName="ratings">
                                           <i
-                                            class="fa fa-star fa-6"
+                                            className="fa fa-star fa-6"
                                             aria-hidden="true"
                                           ></i>
                                           <i
-                                            class="fa fa-star fa-6"
+                                            className="fa fa-star fa-6"
                                             aria-hidden="true"
                                           ></i>
                                           <i
-                                            class="fa fa-star fa-6"
+                                            className="fa fa-star fa-6"
                                             aria-hidden="true"
                                           ></i>
                                           <i
-                                            class="fa fa-star fa-6"
+                                            className="fa fa-star fa-6"
                                             aria-hidden="true"
                                           ></i>
                                         </span>
                                       </div>
                                     </div>{" "}
                                     <span>
-                                      <a href="#" className="btn-move">
+                                      <a href="#" classNameName="btn-move">
                                         {" "}
                                         Rate &amp; Review Product
                                       </a>{" "}
                                       |{" "}
-                                      <a href="#" className="btn-move">
+                                      <a href="#" classNameName="btn-move">
                                         {" "}
                                         Return
                                       </a>
@@ -418,7 +418,7 @@ const MyOrders = () => {
                     : null}
                 </div>
                 <div>
-                  <table className="table totla-table">
+                  <table classNameName="table totla-table">
                     <tbody>
                       <tr>
                         <td>
@@ -464,24 +464,24 @@ const MyOrders = () => {
       >
         <Innermodal>
           <button
-            className="close-button"
+            classNameName="close-button"
             onClick={() => setCancelMOdal(!openCancelModal)}
           >
             X
           </button>
-          <div className="checkout-page contact-page cancel-modal">
+          <div classNameName="checkout-page contact-page cancel-modal">
             {orderDetailsObject ? (
-              <div className="modal_main_div">
-                <div className="submit_frm row" style={{ marginTop: "20px" }}>
+              <div classNameName="modal_main_div">
+                <div classNameName="submit_frm row" style={{ marginTop: "20px" }}>
                   <button
                     onClick={() => selectAllDefult()}
                     type="button"
-                    className="button_desing"
+                    classNameName="button_desing"
                   >
                     All
                   </button>
                 </div>
-                <div className="radio_btns" style={{ marginTop: "20px" }}>
+                <div classNameName="radio_btns" style={{ marginTop: "20px" }}>
                   <Radio.Group onChange={(e) => paymentMode(e.target.value)}>
                     <Radio value={1}>Wallet</Radio>
                     <Radio value={2}>As per mode</Radio>
@@ -493,13 +493,13 @@ const MyOrders = () => {
                 orderDetailsObject.order_lines.length > 0
                   ? orderDetailsObject.order_lines.map((item, index) => {
                       return (
-                        <div key={index} className="order_details">
-                          <div className="inside_crt">
-                            <div className="list_iten_cart">
-                              <div className="media_cart">
+                        <div key={index} classNameName="order_details">
+                          <div classNameName="inside_crt">
+                            <div classNameName="list_iten_cart">
+                              <div classNameName="media_cart">
                                 <img src={item.product_image} alt="" />
                               </div>
-                              <div className="cart_content">
+                              <div classNameName="cart_content">
                                 <h3>{item.product_name}</h3>
                                 <p>
                                   ₹{item.price}{" "}
@@ -512,9 +512,9 @@ const MyOrders = () => {
                                 <p>IP Point {item.incentive_point}</p>
                               </div>
                             </div>
-                            <div className="increase_product circle_mp">
-                              <div className="product-action">
-                                <div className="product-single-qty circle_mp">
+                            <div classNameName="increase_product circle_mp">
+                              <div classNameName="product-action">
+                                <div classNameName="product-single-qty circle_mp">
                                   <input
                                     checked={selectedOrder.includes(item.id)}
                                     onChange={() => removeOrder(item)}
@@ -522,8 +522,8 @@ const MyOrders = () => {
                                     id={item.id}
                                     value={item.id}
                                   />
-                                  <label className="checkbox"></label>
-                                  {/* <Button onClick={() => this.setState({ selectedOrderIndex: index })} className="order_remove_item">{selectedOrderIndex == index ? 'Selected' : 'Select'}</Button> */}
+                                  <label classNameName="checkbox"></label>
+                                  {/* <Button onClick={() => this.setState({ selectedOrderIndex: index })} classNameName="order_remove_item">{selectedOrderIndex == index ? 'Selected' : 'Select'}</Button> */}
                                 </div>
                               </div>
                             </div>
@@ -532,12 +532,12 @@ const MyOrders = () => {
                       );
                     })
                   : null}
-                <div className="submit_frm">
-                  <div className="submit_frm row" style={{ marginTop: "20px" }}>
+                <div classNameName="submit_frm">
+                  <div classNameName="submit_frm row" style={{ marginTop: "20px" }}>
                     <button
                       onClick={() => _returnFullOrder()}
                       type="button"
-                      className="button_desing"
+                      classNameName="button_desing"
                     >
                       Cancel Order
                     </button>
@@ -654,7 +654,7 @@ const Wrapper = styled.div`
         flex: 0 0 50%;
         max-width: 50%;
       }
-      [class*="col-"] {
+      [className*="col-"] {
         padding-left: 10px;
         padding-right: 10px;
       }

@@ -32,10 +32,32 @@ export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   //add to cart
-  const addToCart = (id, color, amount, product, mainSize, slug) => {
+  const addToCart = (
+    id,
+    color,
+    amount,
+    product,
+    mainSize,
+    slug,
+    images,
+    value,
+    sizeValue,
+    getstock
+  ) => {
     dispatch({
       type: ADD_TO_CART,
-      payload: { id, color, amount, product, mainSize, slug },
+      payload: {
+        id,
+        color,
+        amount,
+        product,
+        mainSize,
+        slug,
+        images,
+        value,
+        sizeValue,
+        getstock,
+      },
     });
     Notification("success", "Success!", "Product Add to Cart Successfully.");
   };
@@ -62,8 +84,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}
-    >
+      value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}>
       {children}
     </CartContext.Provider>
   );

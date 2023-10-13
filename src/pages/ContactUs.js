@@ -93,14 +93,14 @@ const ContactUs = () => {
                 We'd love to hear from you - please use the form to send us your
                 message or ideas.
               </p>
-              {/* <p>
-                The Home Use,
+              <p>
+                Mirchi Masala,
                 <br />
-                10 Lati Plot Warehouses, <br />
-                Near Janta Weigh Bridge, <br />
-                Morbi Road, Rajkot – 360003, <br />
+                10 Lati Plot Warehouses,
+                Near Janta Weigh Bridge,
+                Morbi Road, Rajkot – 360003,
                 Gujarat-India. <br />
-              </p> */}
+              </p>
               <ul>
                 <li>
                   <span>Email:</span>mirchimasala@gmail.com

@@ -11,9 +11,9 @@ const Notifications = () => {
   };
   return (
     <Wrapper>
-      <div class="notifications_inside">
+      <div className="notifications_inside">
         <h2>Notifications</h2>
-        <div class="notifications_list">
+        <div className="notifications_list">
           <ul>
             <li>
               Check Out the new offer Home Care 05% Off

@@ -1,9 +1,27 @@
+// export const formatPrice = (number) => {
+//   return new Intl.NumberFormat("en-IN", {
+//     style: "currency",
+//     currency: "INR",
+//   }).format(number);
+// };
+
+// export const formatPrice = (number) => {
+//   return new Intl.NumberFormat("es-AR", {
+//     style: "currency",
+//     currency: "ARS",
+//   }).format(number);
+// };
+
 export const formatPrice = (number) => {
-  return new Intl.NumberFormat("en-IN", {
+  const formattedPrice = new Intl.NumberFormat("es-AR", {
     style: "currency",
-    currency: "INR",
+    currency: "ARS",
   }).format(number);
+
+  // Replace the dollar sign with the AR symbol
+  return formattedPrice.replace(/\$/, "AR");
 };
+
 
 export const mobileValidate = (number) => {
   const regexpMobile = /^[0-9\b]+$/;

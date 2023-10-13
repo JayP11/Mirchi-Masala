@@ -33,7 +33,7 @@ const AboutPage = () => {
       <PageHero title="About" />
       <Wrapper className="page section section-center">
         <div className="row">
-          <h1>THE Mirchi Masalsa STORY</h1>
+          <h1>THE Mirchi Masala STORY</h1>
 
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Lorem ipsum
@@ -57,10 +57,19 @@ const AboutPage = () => {
             optio beatae pariatur delectus?
           </p>
           <p>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum! Non assumenda numquam labore modi ipsam nam consequatur, sed tempora, voluptates vel ut commodi totam accusamus vitae. Sapiente cupiditate sint reprehenderit enim incidunt sed voluptatem sit, inventore ducimus. Culpa aliquid natus possimus qui, incidunt iure maxime similique aut molestias quidem!
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Lorem, ipsum
+            dolor sit amet consectetur adipisicing elit. Eveniet, nostrum! Non
+            assumenda numquam labore modi ipsam nam consequatur, sed tempora,
+            voluptates vel ut commodi totam accusamus vitae. Sapiente cupiditate
+            sint reprehenderit enim incidunt sed voluptatem sit, inventore
+            ducimus. Culpa aliquid natus possimus qui, incidunt iure maxime
+            similique aut molestias quidem!
           </p>
           <p>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis assumenda nulla ut ullam ab dolores quia tempora corrupti? Commodi libero rerum iusto reprehenderit, tenetur ullam.
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Perferendis assumenda
+            nulla ut ullam ab dolores quia tempora corrupti? Commodi libero
+            rerum iusto reprehenderit, tenetur ullam.
           </p>
         </div>
       </Wrapper>

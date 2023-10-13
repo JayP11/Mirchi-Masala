@@ -33,15 +33,12 @@ import { useUserContext } from "../context/user_context";
 import { useWishlistContext } from "../context/wishlist_context";
 
 const SingleProductPage = () => {
-  // console.log(url);
   const { userid, isLogin } = useUserContext();
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
   const { addToWishlist, wishlist_product } = useWishlistContext();
-  const [fruit, setFruit] = useState("");
-  const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("");
-  const [value, setValue] = useState("");
+
   const [wishlistType, setWishlistType] = useState(1);
+  const [main, setMain] = useState();
 
   //getting perams
   const paramm = useParams();
@@ -56,6 +53,8 @@ const SingleProductPage = () => {
     single_product_loading: loading,
     single_product_error: error,
     single_product: singleProduct,
+    inver_index,
+    defulte_size,
     fetchSingleProduct,
   } = useProductsContext();
 
@@ -74,19 +73,42 @@ const SingleProductPage = () => {
     product_images,
     is_wishlist,
     id,
+    size,
     related_products,
     image,
     wholesale_price,
+    inventory,
   } = singleProduct;
 
-  console.log("singleproduct array", singleProduct);
+  const [value, setValue] = useState("");
+  const [value1, setValue1] = useState("");
+  // const [inventory, setInventory] = useState("");
+  const [sizeValue, setSizeValue] = useState("");
+  const [sizeValue2, setSizeValue2] = useState("");
+  const [getstock2, SetStock2] = useState();
+  const [sizeId, setSizeId] = useState("");
+  // const [getstock, SetStock] = useState(singleProduct? singleProduct.details[0].inventory :'');
+  const [getstock, SetStock] = useState();
+  const [getcondition, SetCondition] = useState(false);
+
+  const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+
+  const handleButtonClick = (index) => {
+    setActiveButtonIndex(index);
+  };
+  // console.log("singleproduct array",singleProduct);
 
   //fetch single product details
+
   useEffect(() => {
     fetchSingleProduct(`${url}/${slug}/abc/0`);
-    // console.log(" single_product is", name);
-    // console.log(" location", slug);
   }, [slug]);
+
+  useEffect(() => {
+    // {details && details[0] && details[0].size_name ?  setSizeValue2(details[0].size_name) : null}
+    setSizeValue2(size && size);
+    SetStock2(inventory && inventory);
+  }, [singleProduct]);
 
   useEffect(() => {
     // console.log(" single_product....", is_wishlist);
@@ -111,9 +133,11 @@ const SingleProductPage = () => {
       if (wishlistType == 1) {
         // remove from wishlist
         var params = {
-          calling: 2,
-          product_id: id,
-          customer_id: userid,
+          // calling: 2,
+          product_id: singleProduct.product_id,
+          size_id: sizeId,
+
+          // customer_id: userid,
         };
         addToWishlist(singleProduct, params, 2, id);
         setWishlistType(2);
@@ -121,10 +145,12 @@ const SingleProductPage = () => {
         // add to wishlist
 
         var params = {
-          calling: 1,
-          product_id: id,
-          customer_id: userid,
+          // calling: 1,
+          product_id: singleProduct.product_id,
+          sizeId: sizeId,
+          // customer_id: userid,
         };
+        // console.log("rrr", params);
         addToWishlist(singleProduct, params, 1, id);
         setWishlistType(1);
       }
@@ -147,6 +173,205 @@ const SingleProductPage = () => {
     <Wrapper>
       <Navbar />
       <PageHero title={name} product />
+      <div
+        className="section section-center page"
+        style={{ paddingTop: "30px" }}>
+        <Link to="/products" className="btn-back-to-product">
+          back to products
+        </Link>
+        <div className="product-center">
+          {/* gallery */}
+          <ProductImages images={product_images} />
+          <section className="content">
+            <h3 className="sing-prod-heading">{name}</h3>
+            {/* ratings */}
+            {/* <Stars stars={stars} reviews={reviews} /> */}
+            {/* info */}
+            <h5 className="pricee">
+              {formatPrice(value1 ? value1 : wholesale_price)}
+            </h5>
+            {/* <div className="price-check"></div> */}
+
+            <h5 className="price">{formatPrice(value ? value : price)}</h5>
+
+            {/* <AddToCart product={singleProduct} /> */}
+            {/* {getcondition === true ? (
+              <>{getstock > 0 && <AddToCart product={singleProduct} />}</>
+            ) : (
+              <>
+                {inver_index > 0 && (
+                  <AddToCart
+                      product={singleProduct}
+                      value={value}
+                   
+                  />
+                )}
+              </>
+            )} */}
+            {/* {stock > 0 && <AddToCart product={singleProduct} />} */}
+            {/* <h5>{priceqty.price}</h5>/ */}
+            {/* {quantity.map((details) => {
+              const { size_name } = details;
+              <h5>{size_name}</h5>;
+            })} */}
+
+            <div>
+              <b>Available : </b>
+              {getcondition === true ? (
+                <>{getstock > 0 ? "In Stock" : "Out of Stock"}</>
+              ) : (
+                <>{inver_index > 0 ? "In Stock" : "Out of Stock"}</>
+              )}
+            </div>
+            <div className="qty_map_main">
+              <b>Available in : </b>
+              {details &&
+                details.map((item, index) => {
+                  return (
+                    <div>
+                      <button
+                        className="quantity"
+                        style={{
+                          backgroundColor:
+                            activeButtonIndex === index
+                              ? "var(--clr-primary-darkred)"
+                              : "white",
+                          color:
+                            activeButtonIndex === index
+                              ? "white"
+                              : "var(--clr-primary-darkred)",
+                          border:
+                            activeButtonIndex === index
+                              ? "solid var(--clr-primary-darkred) 2px"
+                              : "solid black 2px",
+                        }}
+                        //  className={`${item.inventory == main.inventory ? "active" : null}`}
+                        onClick={() => {
+                          setValue(item.price);
+                          setValue1(item.wholesale_price);
+                          setSizeId(item.size_id);
+                          setSizeValue(item.size_name);
+                          SetStock(item.inventory);
+                          SetCondition(true);
+                          handleButtonClick(index);
+                          //  setMain(inventory[index])
+                        }}>
+                        {item.size_name}
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
+            {getcondition === true ? (
+              <>
+                {getstock > 0 && (
+                  <AddToCart
+                    product={singleProduct}
+                    value={value}
+                    sizeValue={sizeValue}
+                    getstock={getstock}
+                  />
+                )}
+              </>
+            ) : (
+              <>
+                {inver_index > 0 && (
+                  <AddToCart
+                    product={singleProduct}
+                    value={price}
+                    sizeValue={sizeValue2}
+                    getstock={getstock2}
+                  />
+                )}
+              </>
+            )}
+
+            <div className="description-part-main">
+              <div className="description-part">
+                <p className="info_last">
+                  <b>Description : </b>
+                  <p
+                    style={{ textAlign: "justify" }}
+                    dangerouslySetInnerHTML={{
+                      __html: description,
+                    }}></p>
+                </p>
+                <hr />
+              </div>
+            </div>
+            {/* <p>{item.price}</p> */}
+            {/* <div style={{ display: "flex", gap: "1rem" }}>
+              <div className="quantity">1KG</div>
+              <div className="quantity">500G</div>
+              <div className="quantity">250G</div>
+            </div> */}
+            <div className="size-box-inner">
+              <ul>
+                <li onClick={mAddToWishlist}>
+                  {/* <li
+                  onClick={() =>
+                    // console.log("itemmm->id", singleProduct.product_id)
+                    console.log("itemmm->id", singleProduct.product_id)
+                  }> */}
+                  {wishlistType == 1 ? <FaHeart /> : <FaRegHeart />}
+                  {/* <span style={{ paddingTop: "0px" }}>Add to Wishlist</span> */}
+                </li>
+                <li>{/* <FaRulerHorizontal /> <span>Size Guide</span> */}</li>
+              </ul>
+            </div>
+            {stock > 0 && <ProductTab description={description} />}
+            <div className="userinfo">
+              <p>Need help placing your order?</p>
+              <ul>
+                <li>
+                  <FaWhatsapp />
+                  <span>Call or WhatsApp us at +91 75758 11223</span>
+                </li>
+                <li>
+                  <FaMailBulk />
+                  <span>E-mail us at theapplified@gmail.com</span>
+                </li>
+              </ul>
+            </div>
+            <hr />
+          </section>
+        </div>
+      </div>
+      {/* <hr /> */}
+
+      {/* <div className="similar-prod-img-box">
+          <h4>Similar Products</h4>
+          <div className="similar-prod-img-box-main">
+            {related_products && related_products.length > 0 ? (
+              <img
+                src={image}
+                alt="similar Products"
+                className="similar-img active"
+              />
+            ) : null}
+            <div className="similar-img-box">
+              {related_products && related_products.length > 0 ? (
+                related_products.map((itm, ind) => {
+                  return (
+                    <Link
+                      key={ind}
+                      to={`/products/${itm.slug}`}
+                      style={{ cursor: "pointer" }}>
+                      <img
+                        src={itm.image}
+                        alt="similar images"
+                        className="similar-img before-hover-eff"
+                      />
+                    </Link>
+                  );
+                })
+              ) : (
+                <h4>No Similar product</h4>
+              )}
+            </div>
+          </div>
+        </div> */}
+
       {/* <Helmet>
         <title>{name ? name : ""} - The Home Use</title>
         <meta name="description" content="The Home Use" />
@@ -185,134 +410,6 @@ const SingleProductPage = () => {
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="800" />
       </Helmet> */}
-
-      <div
-        className="section section-center page"
-        style={{ paddingTop: "30px" }}>
-        <Link to="/products" className="btn-back-to-product">
-          back to products
-        </Link>
-        <div className="product-center">
-          {/* gallery */}
-          <ProductImages images={product_images} />
-          <section className="content">
-            <h3 className="sing-prod-heading">{name}</h3>
-            {/* ratings */}
-            {/* <Stars stars={stars} reviews={reviews} /> */}
-            {/* info */}
-
-            {/* <h5 className="pricee">{formatPrice(wholesale_price)}</h5> */}
-            {/* <div className="price-check"></div> */}
-
-            <h5 className="price">{formatPrice(value ? value : price)}</h5>
-            {stock > 0 && <AddToCart product={singleProduct} />}
-            <AddToCart product={singleProduct} />
-
-            {/* <h5>{priceqty.price}</h5>/ */}
-            {/* {quantity.map((details) => {
-              const { size_name } = details;
-              <h5>{size_name}</h5>;
-            })} */}
-            <b>Available in : </b>
-            <div className="qty_map_main">
-              {details &&
-                details.map((item, index) => {
-                  return (
-                    <div>
-                      <div
-                        className="quantity"
-                        onClick={() => {
-                          setValue(item.price);
-                        }}>
-                        {item.size_name}
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-
-            <div className="description-part-main">
-              <div className="description-part">
-                <p className="info_last">
-                  <span>Description : </span>
-                  <p
-                    style={{ textAlign: "justify" }}
-                    dangerouslySetInnerHTML={{
-                      __html: description,
-                    }}></p>
-                </p>
-                <hr />
-              </div>
-            </div>
-            {/* <p>{item.price}</p> */}
-
-            {/* <div style={{ display: "flex", gap: "1rem" }}>
-              <div className="quantity">1KG</div>
-              <div className="quantity">500G</div>
-              <div className="quantity">250G</div>
-            </div> */}
-            <div className="size-box-inner">
-              <ul>
-                <li onClick={mAddToWishlist}>
-                  {wishlistType == 1 ? <FaHeart /> : <FaRegHeart />}
-                  {/* <span style={{ paddingTop: "0px" }}>Add to Wishlist</span> */}
-                </li>
-                <li>{/* <FaRulerHorizontal /> <span>Size Guide</span> */}</li>
-              </ul>
-            </div>
-            {stock > 0 && <ProductTab description={description} />}
-            <div className="userinfo">
-              <p>Need help placing your order?</p>
-              <ul>
-                <li>
-                  <FaWhatsapp />{" "}
-                  <span>Call or WhatsApp us at +91 75758 11223</span>
-                </li>
-                <li>
-                  <FaMailBulk />{" "}
-                  <span>E-mail us at theapplified@gmail.com</span>
-                </li>
-              </ul>
-            </div>
-
-            <hr />
-          </section>
-        </div>
-        {/* <hr /> */}
-
-        {/* <div className="similar-prod-img-box">
-          <h4>Similar Products</h4>
-          <div className="similar-prod-img-box-main">
-            {related_products && related_products.length > 0 ? (
-              <img
-                src={image}
-                alt="similar Products"
-                className="similar-img active"
-              />
-            ) : null}
-            <div className="similar-img-box">
-              {related_products && related_products.length > 0 ? (
-                related_products.map((itm, ind) => {
-                  return (
-                    <Link
-                      key={ind}
-                      to={`/products/${itm.slug}`}
-                      style={{ cursor: "pointer" }}>
-                      <img
-                        src={itm.image}
-                        alt="similar images"
-                        className="similar-img before-hover-eff"
-                      />
-                    </Link>
-                  );
-                })
-              ) : (
-                <h4>No Similar product</h4>
-              )}
-            </div>
-          </div>
-        </div> */}
-      </div>
     </Wrapper>
   );
 };
@@ -338,6 +435,7 @@ const Wrapper = styled.main`
     }
   }
   .product-center {
+    align-items: flex-start;
     display: grid;
     gap: 4rem;
     margin-top: 1.2rem;
@@ -439,7 +537,8 @@ const Wrapper = styled.main`
   .addcart-box {
     display: flex;
     align-items: center;
-    margin: 8px 0 ;
+    margin: 8px 0;
+    gap: 10px;
   }
   .cart-btn button {
     display: inline-block;
@@ -449,19 +548,19 @@ const Wrapper = styled.main`
     color: var(--clr-primary-10);
     line-height: 40px;
     letter-spacing: 0.2em;
-    font-weight: 100 !important;
+    ${"" /* font-weight: 100 !important; */}
     font-size: 15px;
     width: 155px;
     ${"" /* width: 225px; */}
   }
   .cart-btn {
-    margin-right: 25px;
+    ${"" /* margin-right: 25px; */}
   }
   .cart-btn:last-child button {
-    background: #686868;
+    ${"" /* background: #686868; */}
   }
   .cart-btn:last-child button {
-    background: #686868;
+    ${"" /* background: #686868; */}
   }
   .size-box-inner ul {
     display: flex;
@@ -549,7 +648,7 @@ const Wrapper = styled.main`
   }
 
   .active {
-    box-shadow: 0px 0px 0px 2px var(--clr-primary-5);
+    box-shadow: 0px 0px 0px 2px var(--clr-primary-indianred);
   }
 
   .before-hover-eff:hover {
@@ -560,7 +659,7 @@ const Wrapper = styled.main`
   }
 
   .info_last {
-    ${'' /* margin-top: 14px; */}
+    ${"" /* margin-top: 14px; */}
     ${"" /* display: grid; */}
     display: flex;
     gap: 0.5rem;
@@ -592,6 +691,7 @@ const Wrapper = styled.main`
 
   .qty_map_main {
     display: flex;
+    align-items: center;
     margin: 10px 0;
     gap: 0.5rem;
   }
@@ -608,13 +708,14 @@ const Wrapper = styled.main`
     .product-center {
       display: flex;
       grid-template-columns: unset;
-      align-items: end;
+      ${"" /* align-items: end; */}
       section.content {
         max-width: 50%;
         flex: 0 0 50%;
         .addcart-box {
           flex-wrap: wrap;
           width: 100%;
+          gap: 0px;
           .cart-btn {
             margin: 0 0 20px 0;
             width: 100%;
@@ -667,6 +768,7 @@ const Wrapper = styled.main`
   @media screen and (max-width: 991px) {
     .info_last {
       grid-template-columns: none;
+      height: 15px;
     }
   }
 `;

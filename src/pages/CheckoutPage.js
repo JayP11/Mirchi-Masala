@@ -92,11 +92,15 @@ const CheckoutPage = () => {
     formData.append(`billing_address_id`, selectedAddId);
     formData.append(`currency`, "INR");
     formData.append(`gst_no`, "test");
+    formData.append(`device_id`, "bx7ftm5vhdm5c78pqr9l");
+    formData.append(`gst_no`, "test");
 
     for (var i = 0; i < cart.length; i++) {
       formData.append(`product_id[${i}]`, cart[i].idmain);
-      formData.append(`color_id[${i}]`, cart[i].color);
-      formData.append(`size_id[${i}]`, cart[i].size);
+      // formData.append(`color_id[${i}]`, cart[i].color);
+      formData.append(`color_id[${i}]`,1);
+      // formData.append(`size_id[${i}]`, cart[i].size);
+      formData.append(`size_id[${i}]`, 1);
       formData.append(`main_price[${i}]`, cart[i].price);
       formData.append(`price[${i}]`, cart[i].price);
       formData.append(`quantity[${i}]`, cart[i].amount);
@@ -314,12 +318,12 @@ const CheckoutPage = () => {
     <main>
       <PageHero title="Checkout" />
       <Wrapper className="page">
-        <section class="section-big-py-space b-g-light">
-          <div class="section-center products">
-            <div class="checkout-page contact-page">
-              <div class="checkout-form">
+        <section className="section-big-py-space b-g-light">
+          <div className="section-center products">
+            <div className="checkout-page contact-page">
+              <div className="checkout-form">
                 <form>
-                  <div class="row custom-grid">
+                  <div className="row custom-grid">
                     {isLogin ? (
                       <div className="col-md-4">
                         <UserAddress
@@ -329,23 +333,21 @@ const CheckoutPage = () => {
                         />
                       </div>
                     ) : (
-                      <div class="col-lg-6 col-sm-12 col-xs-12 form">
-                        <div class="theme-form">
+                      <div className="col-lg-6 col-sm-12 col-xs-12 form">
+                        <div className="theme-form">
                           <div className="row">
                             <div className="col-md-12">
-                              <div class="layout-flex">
-                                <h2 class="section__title">
-                                  {" "}
+                              <div className="layout-flex">
+                                <h2 className="section__title">
                                   Contact information{" "}
                                 </h2>
-                                <p class="layout-flex__item">
+                                <p className="layout-flex__item">
                                   <span aria-hidden="true">
                                     Already have an account?
                                   </span>
                                   <a
                                     href="javascript:void(0)"
-                                    onClick={() => setShowlogin(!showscreen)}
-                                  >
+                                    onClick={() => setShowlogin(!showscreen)}>
                                     Log in
                                   </a>{" "}
                                 </p>
@@ -359,7 +361,7 @@ const CheckoutPage = () => {
                                   placeholder="Email or mobile phone number"
                                 />
                               </div>
-                              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 top-group checkoutt-checkbox">
+                              <div className="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 top-group checkoutt-checkbox">
                                 <input
                                   type="checkbox"
                                   name="shipping-opt"
@@ -376,8 +378,8 @@ const CheckoutPage = () => {
                             <p>OR</p>
                             <span></span>
                           </div>
-                          <div class="row check-out ">
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <div className="row check-out ">
+                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
                               {/* <label>Full Name</label> */}
                               <input
                                 type="text"
@@ -387,13 +389,13 @@ const CheckoutPage = () => {
                                 onChange={onInputChange}
                               />
                             </div>
-                            {/* <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            {/* <div className="form-group col-md-6 col-sm-6 col-xs-12">
                       <label>Last Name</label>
                       <input type="text" name="field-name" value={lastname}
                         onChange={(e) => setLastname(e.target.value)} placeholder="" />
                     </div> */}
-                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                              {/* <label class="field-label">Phone</label> */}
+                            <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                              {/* <label className="field-label">Phone</label> */}
                               <input
                                 type="text"
                                 name="field-nmber"
@@ -408,8 +410,8 @@ const CheckoutPage = () => {
                               />
                             </div>
 
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                              {/* <label class="field-label">Address</label> */}
+                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                              {/* <label className="field-label">Address</label> */}
                               <input
                                 type="text"
                                 name="field-address"
@@ -418,8 +420,8 @@ const CheckoutPage = () => {
                                 placeholder="Street address"
                               />
                             </div>
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                              {/* <label class="field-label">Country</label> */}
+                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                              {/* <label className="field-label">Country</label> */}
                               <select
                                 value={country}
                                 onChange={(e) => {
@@ -429,8 +431,7 @@ const CheckoutPage = () => {
                                   };
                                   setStateAddress("");
                                   getStates(params);
-                                }}
-                              >
+                                }}>
                                 <option value={""}>Select Country</option>
                                 {get_countrylist.map((country, index) => {
                                   return (
@@ -441,14 +442,13 @@ const CheckoutPage = () => {
                                 })}
                               </select>
                             </div>
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                              {/* <label class="field-label">State</label> */}
+                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                              {/* <label className="field-label">State</label> */}
                               <select
                                 value={_state}
                                 onChange={(e) => {
                                   setStateAddress(e.target.value);
-                                }}
-                              >
+                                }}>
                                 <option value={""}>Select State</option>
 
                                 {get_statelist.map((states, index) => {
@@ -460,8 +460,8 @@ const CheckoutPage = () => {
                                 })}
                               </select>
                             </div>
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                              {/* <label class="field-label">City</label> */}
+                            <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                              {/* <label className="field-label">City</label> */}
                               <input
                                 type="text"
                                 name="field-name"
@@ -471,8 +471,8 @@ const CheckoutPage = () => {
                               />
                             </div>
 
-                            <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                              {/* <label class="field-label">Postal Code</label> */}
+                            <div className="form-group col-md-12 col-sm-6 col-xs-12">
+                              {/* <label className="field-label">Postal Code</label> */}
                               <input
                                 type="text"
                                 name="field-name"
@@ -482,12 +482,11 @@ const CheckoutPage = () => {
                               />
                             </div>
 
-                            <div class="text-right">
+                            <div className="text-right">
                               <a
                                 href="javascript:void(0)"
-                                class="btn-normal btn"
-                                onClick={placeOrderGuest}
-                              >
+                                className="btn-normal btn"
+                                onClick={placeOrderGuest}>
                                 Submit
                               </a>
                             </div>
@@ -495,15 +494,15 @@ const CheckoutPage = () => {
                         </div>
                       </div>
                     )}
-                    <div class="col-lg-6 col-sm-12 col-xs-12 left">
-                      <div class="checkout-details theme-form  section-big-mt-space">
-                        <div class="order-box">
-                          <div class="title-box">
+                    <div className="col-lg-6 col-sm-12 col-xs-12 left">
+                      <div className="checkout-details theme-form  section-big-mt-space">
+                        <div className="order-box">
+                          <div className="title-box">
                             <div>
                               Product <span>Total</span>
                             </div>
                           </div>
-                          <ul class="qty">
+                          <ul className="qty">
                             {cart.map((item) => {
                               return (
                                 <li>
@@ -513,17 +512,17 @@ const CheckoutPage = () => {
                               );
                             })}
                           </ul>
-                          <ul class="sub-total">
+                          <ul className="sub-total">
                             <li>
                               Subtotal{" "}
-                              <span class="count">
+                              <span className="count">
                                 {formatPrice(total_amount)}
                               </span>
                             </li>
                             <li>
                               Shipping
-                              <div class="shipping">
-                                <div class="shopping-option">
+                              <div className="shipping">
+                                <div className="shopping-option">
                                   <input
                                     type="checkbox"
                                     name="free-shipping"
@@ -533,7 +532,7 @@ const CheckoutPage = () => {
                                     Free Shipping
                                   </label>
                                 </div>
-                                <div class="shopping-option">
+                                <div className="shopping-option">
                                   <input
                                     type="checkbox"
                                     name="local-pickup"
@@ -544,20 +543,20 @@ const CheckoutPage = () => {
                               </div>
                             </li>
                           </ul>
-                          <ul class="total">
+                          <ul className="total">
                             <li>
                               Total{" "}
-                              <span class="count">
+                              <span className="count">
                                 {formatPrice(total_amount)}
                               </span>
                             </li>
                           </ul>
                         </div>
-                        <div class="payment-box">
-                          <div class="upper-box">
-                            <div class="payment-options">
+                        <div className="payment-box">
+                          <div className="upper-box">
+                            <div className="payment-options">
                               <ul>
-                                <div class="radio-option">
+                                <div className="radio-option">
                                   <input
                                     type="radio"
                                     value="3"
@@ -566,7 +565,7 @@ const CheckoutPage = () => {
                                   />
                                   <label>Cash On Delivery</label>
                                 </div>
-                                <div class="radio-option">
+                                <div className="radio-option">
                                   <input
                                     type="radio"
                                     value="1"
@@ -575,41 +574,44 @@ const CheckoutPage = () => {
                                   />
                                   <label>Razorpay</label>
                                 </div>
-                                {/* <div class="col-lg-3 col-md-6"> */}
+                                {/* <div className="col-lg-3 col-md-6"> */}
                                 <div className="payment-option-list-main">
-                                  {/* <div class="box-header">
-                                    <div class="image">
+                                  {/* <div className="box-header">
+                                    <div className="image">
                                       <img src={icon2} alt="" />
                                     </div>
-                                    <div class="box-title">
+                                    <div className="box-title">
                                       <h3>Order Online Service</h3>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <div className="clearfix"></div>
                                   </div> */}
 
                                   <ul
                                     className="online-pay-option"
-                                    style={{ listStyleType: "circle" }}
-                                  >
-                                    <li class="online-pay-option-sub">Card</li>
-                                    <li class="online-pay-option-sub">
+                                    style={{ listStyleType: "circle" }}>
+                                    <li className="online-pay-option-sub">
+                                      Card
+                                    </li>
+                                    <li className="online-pay-option-sub">
                                       UPI / QR
                                     </li>
-                                    <li class="online-pay-option-sub">
+                                    <li className="online-pay-option-sub">
                                       Netbanking
                                     </li>
-                                    <li class="online-pay-option-sub">
+                                    <li className="online-pay-option-sub">
                                       Wallet
                                     </li>
-                                    <li class="online-pay-option-sub">EMI</li>
-                                    <li class="online-pay-option-sub">
+                                    <li className="online-pay-option-sub">
+                                      EMI
+                                    </li>
+                                    <li className="online-pay-option-sub">
                                       Pay Later
                                     </li>
                                   </ul>
                                 </div>
 
                                 {/* </div> */}
-                                {/* <div class="radio-option">
+                                {/* <div className="radio-option">
                                   <input
                                     type="radio"
                                     value="2"
@@ -623,19 +625,19 @@ const CheckoutPage = () => {
                                 </div> */}
 
                                 {/* <li>
-                                  <div class="radio-option">
+                                  <div className="radio-option">
                                     <input type="radio" id="1" value="1" checked={payment_type === "1"} onChange={e => setPaymentType("1")} />
-                                    <label for="payment-1">Razorpay<span class="small-text">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
+                                    <label for="payment-1">Razorpay<span className="small-text">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="radio-option">
+                                  <div className="radio-option">
                                     <input type="radio" id="2" value="2" checked={payment_type === "2"} onChange={e => setPaymentType("2")} />
-                                    <label for="payment-2">PayPal<span class="small-text">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
+                                    <label for="payment-2">PayPal<span className="small-text">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="radio-option paypal">
+                                  <div className="radio-option paypal">
                                     <input type="radio" name="payment-group" id="3" value={'3'} checked={payment_type === '3' ? true : false} onChange={e => setPaymentType('3')} />
                                     <label for="payment-3">Cash On Delivery</label>
                                   </div>
@@ -644,22 +646,20 @@ const CheckoutPage = () => {
                             </div>
                           </div>
                           {isLogin ? (
-                            <div class="text-right">
+                            <div className="text-right">
                               <a
                                 href="javascript:void(0)"
-                                class="btn-normal btn"
-                                onClick={placeOrder}
-                              >
+                                className="btn-normal btn"
+                                onClick={placeOrder}>
                                 Place Order
                               </a>
                             </div>
                           ) : (
-                            <div class="text-right">
+                            <div className="text-right">
                               <a
                                 href="javascript:void(0)"
-                                class="btn-normal btn"
-                                onClick={placeOrderGuest}
-                              >
+                                className="btn-normal btn"
+                                onClick={placeOrderGuest}>
                                 Login/Guest
                               </a>
                             </div>
@@ -673,58 +673,58 @@ const CheckoutPage = () => {
             </div>
           </div>
         </section>
-        <section class="flat-row flat-iconbox style5">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-6">
-                <div class="iconbox style1">
-                  <div class="box-header">
-                    <div class="image">
+        <section className="flat-row flat-iconbox style5">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-3 col-md-6">
+                <div className="iconbox style1">
+                  <div className="box-header">
+                    <div className="image">
                       <img src={icon1} alt="" />
                     </div>
-                    <div class="box-title">
+                    <div className="box-title">
                       <h3>Worldwide Shipping</h3>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="iconbox style1">
-                  <div class="box-header">
-                    <div class="image">
+              <div className="col-lg-3 col-md-6">
+                <div className="iconbox style1">
+                  <div className="box-header">
+                    <div className="image">
                       <img src={icon2} alt="" />
                     </div>
-                    <div class="box-title">
+                    <div className="box-title">
                       <h3>Order Online Service</h3>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="iconbox style1">
-                  <div class="box-header">
-                    <div class="image">
+              <div className="col-lg-3 col-md-6">
+                <div className="iconbox style1">
+                  <div className="box-header">
+                    <div className="image">
                       <img src={icon3} alt="" />
                     </div>
-                    <div class="box-title">
+                    <div className="box-title">
                       <h3>Payment</h3>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="iconbox style1">
-                  <div class="box-header">
-                    <div class="image">
+              <div className="col-lg-3 col-md-6">
+                <div className="iconbox style1">
+                  <div className="box-header">
+                    <div className="image">
                       <img src={icon4} alt="" />
                     </div>
-                    <div class="box-title">
+                    <div className="box-title">
                       <h3>Return 30 Days</h3>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
@@ -997,7 +997,7 @@ const Wrapper = styled.section`
           position: relative;
           font-size: 18px;
           line-height: 20px;
-          color: #00baf2;
+          ${"" /* color: #00baf2; */}
           font-weight: 400;
           width: 35%;
           float: right;
@@ -1037,7 +1037,7 @@ const Wrapper = styled.section`
           position: relative;
           font-size: 18px;
           line-height: 20px;
-          color: #00baf2;
+          ${"" /* color: #00baf2; */}
           font-weight: 400;
         }
 
@@ -1144,7 +1144,8 @@ const Wrapper = styled.section`
     top: -1px;
     left: 0;
     height: 100%;
-    border-color: var(--clr-primary-5);
+    ${"" /* border-color: var(--clr-primary-5); */}
+    border-color: var(--clr-primary-darkred);
     border-width: 1px 0 1px 0;
     -webkit-transition-delay: 0.05s;
     transition-delay: 0.05s;
@@ -1295,7 +1296,8 @@ const Wrapper = styled.section`
     .row.custom-grid {
       .col-md-4 {
         max-width: 100%;
-        padding-top: 30px;
+        ${"" /* padding-top: 30px; */}
+        padding: 30px 15px 0 15px;
         flex: 0 0 100%;
       }
       .col-lg-6.col-sm-12.col-xs-12.left {
@@ -1305,6 +1307,15 @@ const Wrapper = styled.section`
     .checkout-form .row.custom-grid .col-lg-6.col-sm-12.col-xs-12.form {
       max-width: 100%;
       width: 100%;
+    }
+
+    ${
+      "" /* .col-lg-9 order-lg-last dashboard-content{
+      padding:0 15px;
+    } */
+    }
+    .page {
+      min-height: calc(60vh - (20vh + 10rem));
     }
   }
 

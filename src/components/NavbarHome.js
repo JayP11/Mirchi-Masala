@@ -83,7 +83,7 @@ const NavContainer = styled.nav`
   .nav-center {
     width: 90vw;
     margin: 0 auto;
-    max-width: var(--max-width);
+    ${'' /* max-width: var(--max-width); */}
   }
   .nav-header {
     display: flex;
@@ -109,6 +109,7 @@ const NavContainer = styled.nav`
     display: none;
   }
   .cart-btn-wrapper {
+    gap: 20px;
     display: none;
   }
   @media (min-width: 992px) {
@@ -140,7 +141,9 @@ const NavContainer = styled.nav`
       }
     }
     .cart-btn-wrapper {
-      display: grid;
+      display: flex;
+      flex-direction: row-reverse;
+      ${"" /* display: grid; */}
     }
   }
 `;

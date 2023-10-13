@@ -12,17 +12,17 @@ const ReferFriend = () => {
   };
   return (
     <Wrapper>
-      <div class="inside_notifications">
+      <div className="inside_notifications">
         <img src={icon} alt="" />
         <p>
           <span>REFER A FRIEND</span> AND EARN 100 LOYALTY POINTS
         </p>
-        <div class="note_area">
-          <div class="left_noti">
+        <div className="note_area">
+          <div className="left_noti">
             <img src={referral_code} alt="" />
             <h4>NAS8068</h4>
           </div>
-          <div class="right_noti">
+          <div className="right_noti">
             <a href="javascript:void(0)" id="show_refer">
               Share Referral Code
             </a>

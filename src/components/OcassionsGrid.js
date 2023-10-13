@@ -124,7 +124,7 @@ const Section = styled.section`
     margin-left: -50px;
   }
 
-  .product-sec [class*="col-"] {
+  .product-sec [className*="col-"] {
     padding: 0 50px;
   }
   .product-text button {

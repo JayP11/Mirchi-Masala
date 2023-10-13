@@ -9,12 +9,25 @@ import {
 const cart_reducer = (state, action) => {
   // add to cart reducer
   if (action.type === ADD_TO_CART) {
-    const { id, color, amount, product, mainSize, slug } = action.payload;
+    const {
+      id,
+      color,
+      amount,
+      product,
+      mainSize,
+      slug,
+      images,
+      value,
+      sizeValue,
+      getstock,
+    } = action.payload;
 
-    const tempItem = state.cart.find((i) => i.id === id + color);
+    console.log("===>",product);
+
+    const tempItem = state.cart.find((i) => i.id === id + value);
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
-        if (cartItem.id === id + color) {
+        if (cartItem.id === id + value) {
           let newAmount = cartItem.amount + amount;
           if (newAmount > cartItem.max) {
             newAmount = cartItem.max;
@@ -28,18 +41,20 @@ const cart_reducer = (state, action) => {
       return { ...state, cart: tempCart };
     } else {
       const newItem = {
-        id: id + color,
+        id: id + value,
         idmain: id,
         slug: slug,
         name: product.name,
         color,
         amount,
-        image: product.images[0].url,
-        price: product.wholesale_price,
-        max: product.stock,
-        size: mainSize,
+        image: images,
+        // price: product.price,
+        price: value,
+        // max: product.stock,
+        max: getstock,
+        size: sizeValue,
       };
-      console.log("123", newItem);
+      // console.log("123", newItem);
       return { ...state, cart: [...state.cart, newItem] };
     }
   }

@@ -101,7 +101,7 @@ export const OrderProvider = ({ children }) => {
         {},
         {
           headers: {
-            Accept: "application/x..v1+json",
+            Accept: "application/x.mm.v1+json",
             Authorization: "Bearer ".concat(token),
           },
         }

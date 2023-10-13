@@ -31,6 +31,7 @@ const Wrapper = styled.section`
   width: 100%;
   min-height: 8vh;
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
   font-weight: 600;
@@ -48,7 +49,7 @@ const Wrapper = styled.section`
   }
   @media screen and (max-width: 420px) {
     .path-heading {
-      font-size: 16px !important;
+      ${'' /* font-size: 16px !important; */}
     }
   }
 `;

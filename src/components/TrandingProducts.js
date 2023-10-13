@@ -23,10 +23,10 @@ const TrandingProducts = () => {
     produts_error: error,
     trending_products: tranding,
   } = useProductsContext();
-  console.log(
-    "🚀 ~ file: TrandingProducts.js:26 ~ TrandingProducts ~ tranding:",
-    tranding
-  );
+  // console.log(
+  //   "🚀 ~ file: TrandingProducts.js:26 ~ TrandingProducts ~ tranding:",
+  //   tranding
+  // );
   // if (loading) {
   //   return <Loading />;
   // }
@@ -107,6 +107,7 @@ const Wrapper = styled.section`
     gap: 2.5rem;
     max-width: 80%;
     img {
+      object-fit:cover;
       height: 200px;
     }
   }

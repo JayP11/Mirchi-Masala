@@ -81,8 +81,8 @@ export const single_product_url = BaseUrl + "product-detail";
 export const login_url = BaseUrl + "login";
 
 export const signup_url = BaseUrl + "register";
-// export const add_wishlist_url = BaseUrl + "all-wishlist";
-export const add_wishlist_url = BaseUrl + "wishlist/";
+export const add_wishlist_url = BaseUrl + "wishlist";
+// export const place_order_url = BaseUrl + "new-place-order";
 export const place_order_url = BaseUrl + "new-place-order";
 export const add_address_url = BaseUrl + "add-address";
 export const get_countries = BaseUrl + "countries";
@@ -101,6 +101,8 @@ export const create_store_ticket = BaseUrl + "store-ticket";
 export const store_ticket_view_url = BaseUrl + "store-ticket-view";
 export const contact_us = BaseUrl + "contact-us";
 export const get_payment_id = BaseUrl + "get_payment_id";
+export const notification = BaseUrl + "notification";
+export const remove_wishlist = BaseUrl + "removewishlist/";
 
 // export const single_product_url = `https://course-api.com/react-store-single-product?id=`;
 

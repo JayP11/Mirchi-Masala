@@ -42,6 +42,12 @@ const UserAddress = (props) => {
     deleteAddress,
     editAddress,
   } = useAddressContext();
+  console.log(
+    "🚀 ~ file: UserAddress.js:45 ~ UserAddress ~ get_address_data:",
+    get_address_data
+  );
+  // console.log("🚀 ~ file: UserAddress:45 ~ UserAddress ~ getAddress:", getAddress)
+  // console.log("🚀 ~ file: UserAddress.js:45 ~ UserAddress ~ get_countrylist:", get_countrylist)
   const [firstname, setFirstname] = React.useState("");
   const [mobile, setMobile] = React.useState("");
   const [address, setAddress] = React.useState("");
@@ -70,6 +76,10 @@ const UserAddress = (props) => {
       getStates(params);
     }
   }, [get_countrylist]);
+  console.log(
+    "🚀 ~ file: UserAddress.js:73 ~ UserAddress ~ get_countrylist:",
+    get_countrylist
+  );
 
   const mDeleteAddress = async (id) => {
     let formData = new FormData(); //formdata object
@@ -192,42 +202,39 @@ const UserAddress = (props) => {
   return (
     <main>
       <Wrapper className="page">
-        <section class="section-big-py-space b-g-light">
-          <div class="col-lg-9 order-lg-last dashboard-content">
-            <div class="card card_bg_color">
+        <section className="section-big-py-space b-g-light">
+          <div className="col-lg-9 order-lg-last dashboard-content">
+            <div className="card card_bg_color">
               <div
                 onClick={() => addNewAddress()}
-                class="card-header"
+                className="card-header"
                 type="button"
                 data-toggle="modal"
-                data-target="#AddressModal"
-              >
-                <i class="fa" aria-hidden="true">
+                data-target="#AddressModal">
+                <i className="fa" aria-hidden="true">
                   <FaPlusCircle />
-                </i>{" "}
+                </i>
                 Add New Address
               </div>
               {get_address_data.map((item, index) => {
                 return (
                   <div
                     onClick={() => mSelectAddress(item)}
-                    class={
+                    className={
                       props.selectedAddId == item.id
                         ? "card-body active"
                         : "card-body deactive"
-                    }
-                  >
-                    <div class="row">
-                      <div class="col-md-9">
-                        <div class="addressList">
+                    }>
+                    <div className="row">
+                      <div className="col-md-9">
+                        <div className="addressList">
                           <h4>
-                            <i class="fas">
+                            <i className="fas">
                               <FaHome />
                             </i>
                             {item.fullname}
                             {props.selectedAddId == item.id ? (
                               <div className="check">
-                                {" "}
                                 <FaCheckCircle />
                               </div>
                             ) : null}
@@ -242,21 +249,19 @@ const UserAddress = (props) => {
                           </address>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="actions_btns">
-                          <div class="left_edit">
+                      <div className="col-md-3">
+                        <div className="actions_btns">
+                          <div className="left_edit">
                             <a
                               href="javascript:void(0);"
-                              onClick={() => mEditAddress(item)}
-                            >
+                              onClick={() => mEditAddress(item)}>
                               Edit
                             </a>
                           </div>
-                          <div class="right_delete">
+                          <div className="right_delete">
                             <a
                               href="javascript:void(0);"
-                              onClick={() => mDeleteAddress(item.id)}
-                            >
+                              onClick={() => mDeleteAddress(item.id)}>
                               Delete
                             </a>
                           </div>
@@ -274,17 +279,16 @@ const UserAddress = (props) => {
           // onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
-        >
+          contentLabel="Example Modal">
           <Innermodal>
             <button className="close-button" onClick={closeModal}>
               X
             </button>
             <div className="checkout-page contact-page">
               <div className="checkout-form">
-                <div class="theme-form">
-                  <div class="row check-out ">
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                <div className="theme-form">
+                  <div className="row check-out ">
+                    <div className="form-group col-md-6 col-sm-6 col-xs-12">
                       <label>Full Name</label>
                       <input
                         type="text"
@@ -294,13 +298,13 @@ const UserAddress = (props) => {
                         onChange={(e) => setFirstname(e.target.value)}
                       />
                     </div>
-                    {/* <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    {/* <div className="form-group col-md-6 col-sm-6 col-xs-12">
                       <label>Last Name</label>
                       <input type="text" name="field-name" value={lastname}
                         onChange={(e) => setLastname(e.target.value)} placeholder="" />
                     </div> */}
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <label class="field-label">Phone</label>
+                    <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                      <label className="field-label">Phone</label>
                       <input
                         type="text"
                         name="field-name"
@@ -315,8 +319,8 @@ const UserAddress = (props) => {
                       />
                     </div>
 
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <label class="field-label">Address</label>
+                    <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label className="field-label">Address</label>
                       <input
                         type="text"
                         name="field-name"
@@ -325,8 +329,8 @@ const UserAddress = (props) => {
                         placeholder="Street address"
                       />
                     </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <label class="field-label">Country</label>
+                    <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label className="field-label">Country</label>
                       <select
                         value={country}
                         onChange={(e) => {
@@ -336,8 +340,7 @@ const UserAddress = (props) => {
                           };
                           setStateAddress("");
                           getStates(params);
-                        }}
-                      >
+                        }}>
                         <option value={""}>Select Country</option>
                         {get_countrylist.map((country, index) => {
                           return (
@@ -346,14 +349,13 @@ const UserAddress = (props) => {
                         })}
                       </select>
                     </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <label class="field-label">State</label>
+                    <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label className="field-label">State</label>
                       <select
                         value={_state}
                         onChange={(e) => {
                           setStateAddress(e.target.value);
-                        }}
-                      >
+                        }}>
                         <option value={""}>Select State</option>
 
                         {get_statelist.map((states, index) => {
@@ -365,8 +367,8 @@ const UserAddress = (props) => {
                         })}
                       </select>
                     </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <label class="field-label">City</label>
+                    <div className="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label className="field-label">City</label>
                       <input
                         type="text"
                         name="field-name"
@@ -376,8 +378,8 @@ const UserAddress = (props) => {
                       />
                     </div>
 
-                    <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                      <label class="field-label">Postal Code</label>
+                    <div className="form-group col-md-12 col-sm-6 col-xs-12">
+                      <label className="field-label">Postal Code</label>
                       <input
                         type="text"
                         name="field-name"
@@ -387,12 +389,11 @@ const UserAddress = (props) => {
                       />
                     </div>
 
-                    <div class="text-right">
+                    <div className="text-right">
                       <a
                         href="javascript:void(0)"
-                        class="btn-normal btn"
-                        onClick={mAddAddress}
-                      >
+                        className="btn-normal btn"
+                        onClick={mAddAddress}>
                         Submit
                       </a>
                     </div>
@@ -501,7 +502,8 @@ const Wrapper = styled.section`
             a {
               padding: 8px;
               text-decoration: none;
-              color: #48c0cb;
+              ${"" /* color: #48c0cb; */}
+              color: var(--clr-primary-darkred);
               font-size: 12px;
               .edit_delete {
                 float: left;
@@ -511,7 +513,7 @@ const Wrapper = styled.section`
             }
           }
         }
-        [class*="col-"] {
+        [className*="col-"] {
           padding-left: 10px;
           padding-right: 10px;
         }
@@ -996,7 +998,7 @@ const Innermodal = styled.section`
     top: 0px;
     left: -1px;
     height: 100%;
-    border-color: var(--clr-primary-5);
+    ${"" /* border-color: var(--clr-primary-5); */}
     border-width: 0 1px 0 1px;
     -webkit-transition-delay: 0.05s;
     transition-delay: 0.05s;

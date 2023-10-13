@@ -7,13 +7,14 @@ import { CartContent, PageHero } from "../components";
 const CartPage = () => {
   window.scrollTo(0, 0)
   const { cart } = useCartContext();
+  // console.log("🚀 ~ file: CartPage.js:10 ~ CartPage ~ cart:", cart)
   if (cart.length < 1) {
     return (
       <Wrapper className="page-100">
         <div className="empty">
           <h2>Your Cart is empty</h2>
           <Link to="/products" className="btn">
-            Fill it{" "}
+            Fill it
           </Link>
         </div>
       </Wrapper>

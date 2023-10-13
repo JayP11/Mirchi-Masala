@@ -25,10 +25,14 @@ const initialState = {
   featured_products: [],
   //Trending product
   trending_products: [],
+   defulte_size: '',
   //single product
   single_product_loading: false,
   single_product_error: false,
   single_product: "",
+  inver_index: '',
+ 
+  // prodid: getProdid(),
   // userid:0,
 };
 
@@ -45,6 +49,16 @@ export const ProductsProvider = ({ children }) => {
   };
   const closeSideBar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
+  };
+
+
+  const getUserId = () => {
+    let userid = localStorage.getItem("userid");
+    if (userid) {
+      return JSON.parse(localStorage.getItem("userid"));
+    } else {
+      return 0;
+    }
   };
 
   //fetch all product api

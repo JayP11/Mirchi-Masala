@@ -24,23 +24,26 @@ const CartItem = ({
   const decrease = () => {
     toggleAmount(id, "dec");
   };
-  console.log("color", color);
+
   return (
     <Wrapper>
       <div className="title">
-        <img src={image} alt={name} />
+        <img src={image[0].image} alt={name} />
+        {/* <img src={image} alt={name} /> */}
         <div>
           <h5 className="name">{name}</h5>
-          {color !== "no" && (
+          {/* {color !== "no" && (
             <p className="color">
               color : <span style={{ background: color }}></span>
               <h5 className="price-small">{formatPrice(price)}</h5>
             </p>
-          )}
-          <p className="name">
+          )} */}
+          <p className="name"
+            style={{ marginTop: "0.3rem" }}>
             Size : <span>{size}</span>
           </p>
-          <Link to={`/products/${slug}`} className="btn">
+          {/* <Link to={`/products/${slug}`} className="btn"> */}
+          <Link to={`/products/${slug}/abc/0`} className="btn">
             Details
           </Link>
         </div>
@@ -53,14 +56,12 @@ const CartItem = ({
         className="remove-btn"
         onClick={() => {
           removeItem(id);
-        }}
-      >
+        }}>
         <FaTrash />
       </button>
     </Wrapper>
   );
 };
-
 const Wrapper = styled.article`
   .subtotal {
     display: none;
@@ -90,7 +91,7 @@ const Wrapper = styled.article`
   }
   img {
     width: 100%;
-    height: unset;
+    height: 100px !important;
     display: block;
     border-radius: var(--radius);
     object-fit: cover;
@@ -161,7 +162,7 @@ const Wrapper = styled.article`
     .price {
       display: block;
       font-size: 1rem;
-      color: var(--clr-primary-5);
+      ${"" /* color: var(--clr-primary-5); */}
       font-weight: 400;
     }
     .name {
@@ -178,7 +179,8 @@ const Wrapper = styled.article`
     align-items: center;
     grid-template-rows: unset;
     img {
-      height: unset;
+      ${'' /* height: unset; */}
+      height: 100px !important;
     }
     .title {
       height: 100%;

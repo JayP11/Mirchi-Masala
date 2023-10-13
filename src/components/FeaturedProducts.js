@@ -12,10 +12,10 @@ const FeaturedProducts = () => {
     produts_error: error,
     featured_products: featured,
   } = useProductsContext();
-  console.log(
-    "🚀 ~ file: FeaturedProducts.js:15 ~ FeaturedProducts ~ featured:",
-    featured
-  );
+  // console.log(
+  //   "🚀 ~ file: FeaturedProducts.js:15 ~ FeaturedProducts ~ featured:",
+  //   featured
+  // );
 
   // console.log("featured_products are ", featured_products);
 

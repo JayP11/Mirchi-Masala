@@ -367,7 +367,7 @@ const Wrapper = styled.footer`
     transition: all 0.5s ease;
   }
   ul.links.link-parts a {
-    font-size: 12px;
+    ${'' /* font-size: 12px; */}
     line-height: 24px;
     color: #afafaf;
   }

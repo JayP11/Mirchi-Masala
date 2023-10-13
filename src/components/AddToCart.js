@@ -14,13 +14,14 @@ import {
   FaMailBulk,
 } from "react-icons/fa";
 import IImages from "../constants/IImages";
-// import Notification from "../utils/Notification";
-const AddToCart = ({ product }) => {
+import Notification from "../utils/Notification";
+const AddToCart = ({ product, value, sizeValue, getstock }) => {
   const { addToCart } = useCartContext();
 
   const {
     id,
     stock,
+    details,
     colors,
     description,
     short_description,
@@ -33,19 +34,35 @@ const AddToCart = ({ product }) => {
     slug,
   } = product;
 
-  console.log("product details", product);
+  console.log("product details", sizeValue);
+  console.log("product details qty", getstock);
   // Set Color State
   const [mainColor, setMainColor] = useState(colors ? colors[0] : []);
   const [mainSize, setMainSize] = useState(sizes ? sizes[0] : []);
 
+  const [stockAvail, setStockAvail] = useState();
+  // console.log(
+  //   "🚀 ~ file: AddToCart.js:44 ~ AddToCart ~ stockAvail:",
+  //   stockAvail
+  // );
+
   //set the amount buttons state
   const [qty, setQty] = useState(1);
 
+  // const increase = () => {
+  //   setQty((oldQty) => {
+  //     let tempQty = oldQty + 1;
+  //     if (tempQty > stock) {
+  //       tempQty = stock;
+  //     }
+  //     return tempQty;
+  //   });
+  // };
   const increase = () => {
     setQty((oldQty) => {
       let tempQty = oldQty + 1;
-      if (tempQty > stock) {
-        tempQty = stock;
+      if (tempQty > getstock) {
+        tempQty = getstock;
       }
       return tempQty;
     });
@@ -88,19 +105,33 @@ const AddToCart = ({ product }) => {
           <button
             type="submit"
             onClick={() => {
-              addToCart(id, mainColor, qty, product, mainSize, slug);
+              console.log("ttttt->", JSON.stringify(value, null, 2));
+              addToCart(
+                product.product_id,
+                mainColor,
+                qty,
+                product,
+                mainSize,
+                slug,
+                product.product_images,
+                value,
+                sizeValue,
+                getstock
+              );
+
+              // addToCart(id, mainColor, qty, product, mainSize, slug);
             }}>
             ADD TO CART
           </button>
         </div>
-        <Link
+        {/* <Link
           to="/cart"
           className="cart-btn"
           onClick={() =>
             addToCart(id, mainColor, qty, product, mainSize, slug)
           }>
           <button type="submit">BUY IT NOW</button>
-        </Link>
+        </Link> */}
       </div>
       {/* colors */}
       {/* <div className="colors">
@@ -123,8 +154,11 @@ const AddToCart = ({ product }) => {
         </div>
       </div> */}
       <p className="info">
-        <span>Available : </span>
-        {stock > 0 ? "In Stock" : "Out of Stock"}
+        {/* <span>Available : </span>s */}
+        {/* <h5>{stockAvail > 0 ? "In Stock" : "Out of Stock"}</h5> */}
+
+        {/* {stock > 0 ? "In Stock" : "Out of Stock"} */}
+        {/* {details[0].inventory > 0 ? "In Stock" : "Out of Stock"} */}
       </p>
       {/* <p className="info">
         <span>SKU : </span>

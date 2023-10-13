@@ -28,8 +28,7 @@ const Sidebar = () => {
   return (
     <SidebarContainerr>
       <aside
-        className={`${isSidebarOpen ? "sidebarr show-sidebarr" : "sidebarr"}`}
-      >
+        className={`${isSidebarOpen ? "sidebarr show-sidebarr" : "sidebarr"}`}>
         <div className="sidebar-headerr">
           <img src={IImages.weblogo} className="logoss" alt="The Home Use" />
           <button type="button" className="close-btnn" onClick={closeSideBar}>
@@ -183,7 +182,7 @@ const SidebarContainerr = styled.div`
   }
   .logoss {
     justify-self: center;
-    ${'' /* height: 45px; */}
+    ${"" /* height: 45px; */}
     height: 90px;
     z-index: 9999;
   }
@@ -226,6 +225,7 @@ const SidebarContainerr = styled.div`
     opacity: inherit;
   }
   .cart-btn-wrapper {
+    gap: 20px;
     margin: 2rem auto;
   }
   @media screen and (min-width: 992px) {

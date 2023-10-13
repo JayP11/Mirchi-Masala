@@ -66,7 +66,7 @@ const NavbarHome3 = () => {
                       className="MegaMenu__img"
                       style={{ backgroundImage: `url(${background})` }}
                     >
-                      {/* <p class="MegaMenu__PushHeading">
+                      {/* <p className="MegaMenu__PushHeading">
                         View All <FaArrowRight />
                       </p> */}
                     </div>
@@ -126,7 +126,7 @@ const NavbarHome3 = () => {
                       className="MegaMenu__img"
                       style={{ backgroundImage: `url(${background})` }}
                     >
-                      {/* <p class="MegaMenu__PushHeading">
+                      {/* <p className="MegaMenu__PushHeading">
                         View All <FaArrowRight />
                       </p> */}
                     </div>
@@ -211,10 +211,11 @@ const NavContainer = styled.nav`
     }
   }
   .nav-links {
-    ${'' /* margin-bottom:0px; */}
+    ${"" /* margin-bottom:0px; */}
     display: none;
   }
   .cart-btn-wrapper {
+    gap: 20px;
     display: none;
   }
   @media (min-width: 992px) {

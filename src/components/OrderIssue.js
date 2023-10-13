@@ -50,12 +50,12 @@ const OrderIssue = () => {
   };
   return (
     <Wrapper>
-      <div class="notification issue_inner">
-        <div class="row">
-          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-            <div class="notification_head ticket_list">
+      <div className="notification issue_inner">
+        <div className="row">
+          <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div className="notification_head ticket_list">
               <h3>Order Issue</h3>
-              <div class="add_ticket">
+              <div className="add_ticket">
                 <a href="javascript:void(0)" onClick={toggleClass}>
                   <img src={add_ticket} /> Create Ticket
                 </a>
@@ -64,34 +64,38 @@ const OrderIssue = () => {
           </div>
         </div>
         {isActive ? (
-          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+          <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             {store_ticket_list &&
               store_ticket_list.map((item, index) => {
                 return (
-                  <div class="ticket_listing pt-20">
-                    <div class="product_issue">
-                      <div class="ticket_id">
+                  <div className="ticket_listing pt-20">
+                    <div className="product_issue">
+                      <div className="ticket_id">
                         <p>
                           Ticket ID :
                           <span>
                             <a
                               href="javascript:void(0)"
-                              class="id_no"
+                              className="id_no"
                               data-toggle="tooltip"
                               data-placement="top"
                               title=""
-                              data-original-title="view details"
-                            >
+                              data-original-title="view details">
                               {item.ticket_number}
                             </a>
                           </span>
                         </p>
                       </div>
-                      <div class="pending_issue">
-                        <span>Pending</span>
+                      <div className="pending_issue">
+                        {item.is_active === 1 ? (
+                          <span>Answered</span>
+                        ) : (
+                          <span>Active</span>
+                        )}
+                        {/* <span>Pending</span> */}
                       </div>
                     </div>
-                    <div class="issue_subject">
+                    <div className="issue_subject">
                       <p>
                         Subject :<span> {item.subject}</span>
                       </p>
@@ -99,7 +103,7 @@ const OrderIssue = () => {
                         Store :<span> {item.store_name}</span>
                       </p>
                     </div>
-                    <div class="issue_date">
+                    <div className="issue_date">
                       <p>Created On : {item.created_at}</p>
                     </div>
                   </div>
@@ -107,13 +111,13 @@ const OrderIssue = () => {
               })}
           </div>
         ) : (
-          <div class="my_profile_inside">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
+          <div className="my_profile_inside">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="Name"
                     required=""
                     placeholder="Enter store name"
@@ -122,8 +126,8 @@ const OrderIssue = () => {
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <div style={{ width: "100%" }} className="ant-input">
                     <DatePicker
                       style={{ width: "100%" }}
@@ -133,11 +137,11 @@ const OrderIssue = () => {
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="Name"
                     required=""
                     placeholder="Name"
@@ -147,20 +151,20 @@ const OrderIssue = () => {
                 </div>
               </div>
             </div>
-            <div class="mb-2"></div>
+            <div className="mb-2"></div>
 
-            <div class="form-footer">
-              <div class="form-footer-center edit_profile_f">
+            <div className="form-footer">
+              <div className="form-footer-center edit_profile_f">
                 <button
                   type="submit"
-                  class="btn btn-primary profile_btn"
+                  className="btn btn-primary profile_btn"
                   onClick={() => createTicket()}
                 >
                   Submit
                 </button>
                 <button
                   type="submit"
-                  class="btn btn-primary profile_btn"
+                  className="btn btn-primary profile_btn"
                   onClick={toggleClass}
                 >
                   Back
@@ -193,7 +197,7 @@ const Wrapper = styled.div`
         flex: 0 0 100%;
         max-width: 100%;
       }
-      [class*="col-"] {
+      [className*="col-"] {
         padding-left: 10px;
         padding-right: 10px;
       }

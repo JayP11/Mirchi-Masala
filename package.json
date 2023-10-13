@@ -2,7 +2,7 @@
   "name": "store",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://thehomeuse.com/",
+  "homepage": "https://getmynfc.com/mm",
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
     "@stripe/react-stripe-js": "^1.1.2",

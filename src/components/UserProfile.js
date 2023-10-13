@@ -29,45 +29,44 @@ const UserProfile = () => {
     <Wrapper>
       {isActive ? (
         logindata ? (
-          <div class="my_profile_inside">
+          <div className="my_profile_inside">
             <h2>Personal Information</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="inner_profile_in">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="inner_profile_in">
                   <p>
                     ID Number<span>{logindata.id_no} </span>
                   </p>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="inner_profile_in">
+              <div className="col-md-6">
+                <div className="inner_profile_in">
                   <p>
                     Name<span>{logindata.name}</span>
                   </p>
                 </div>
               </div>
 
-              <div class="col-md-6">
-                <div class="inner_profile_in">
+              <div className="col-md-6">
+                <div className="inner_profile_in">
                   <p>
                     Email ID<span>{logindata.email}</span>
                   </p>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="inner_profile_in">
+              <div className="col-md-6">
+                <div className="inner_profile_in">
                   <p>
                     Mobile Number<span>{logindata.number}</span>
                   </p>
                 </div>
               </div>
 
-              <div class="col-md-12">
+              <div className="col-md-12">
                 <button
                   type="submit"
-                  class="btn btn-primary profile_btn"
-                  onClick={toggleClass}
-                >
+                  className="btn btn-primary profile_btn"
+                  onClick={toggleClass}>
                   Edit
                 </button>
               </div>
@@ -77,15 +76,15 @@ const UserProfile = () => {
           ""
         )
       ) : (
-        <div class="my_profile_inside">
+        <div className="my_profile_inside">
           <h2>Edit Profile</h2>
           <div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="Name"
                     required=""
                     placeholder="Name"
@@ -95,11 +94,11 @@ const UserProfile = () => {
                 </div>
               </div>
               {/* 
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="email"
                     required=""
                     placeholder="Email Id"
@@ -107,20 +106,21 @@ const UserProfile = () => {
                   />
                 </div>
               </div> */}
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="Name"
                     required=""
-                    placeholder="Name"
+                    maxLength={10}
+                    placeholder="Mobile no."
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
                   />
                   {/* <input
                     type="text"
-                    class="form-control forms_inputs"
+                    className="form-control forms_inputs"
                     name="text"
                     required=""
                     placeholder="Mobile Number"
@@ -134,22 +134,20 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div class="mb-2"></div>
+            <div className="mb-2"></div>
 
-            <div class="form-footer">
-              <div class="form-footer-center edit_profile_f">
+            <div className="form-footer">
+              <div className="form-footer-center edit_profile_f">
                 <button
                   type="submit"
-                  class="btn btn-primary profile_btn"
-                  onClick={mUpdateProfile}
-                >
+                  className="btn btn-primary profile_btn"
+                  onClick={mUpdateProfile}>
                   Update
                 </button>
                 <button
                   type="submit"
-                  class="btn btn-primary profile_btn"
-                  onClick={toggleClass}
-                >
+                  className="btn btn-primary profile_btn"
+                  onClick={toggleClass}>
                   Back
                 </button>
               </div>
@@ -205,7 +203,7 @@ const Wrapper = styled.div`
           display: block;
           padding: 15px 0px 0px;
           font-weight: 400;
-          color: #828080;
+          ${'' /* color: #828080; */}
         }
       }
     }
@@ -220,7 +218,7 @@ const Wrapper = styled.div`
         border-bottom: 1px solid #929292;
         border-radius: 0;
         background-color: transparent;
-        color: #959799;
+        ${'' /* color: #959799; */}
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;

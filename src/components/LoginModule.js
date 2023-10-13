@@ -482,7 +482,8 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button.btn-login {
-    background: var(--clr-primary-5);
+    ${'' /* background: var(--clr-primary-5); */}
+    background: var(--clr-primary-darkred);
     color: #fff;
     transition: all 0.5s ease;
   }
@@ -492,7 +493,7 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button:hover {
-    background: var(--clr-primary-5);
+    ${'' /* background: var(--clr-primary-5); */}
     color: #fff;
     transition: all 0.5s ease;
   }

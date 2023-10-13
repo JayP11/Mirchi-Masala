@@ -6,6 +6,7 @@ import { useWishlistContext } from "../context/wishlist_context";
 
 const WishlistPage = () => {
   const { wishlist_product } = useWishlistContext();
+  // console.log("🚀 ~ file: WishlistPage.js:9 ~ WishlistPage ~ wishlist_product:", wishlist_product)
   window.scrollTo(0, 0)
   console.log('wishlist_product ',wishlist_product)
   if (wishlist_product.length < 1) {

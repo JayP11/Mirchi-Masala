@@ -20,7 +20,7 @@ import {
 //get from local storage at the time of initializing
 const getLocalStorage = () => {
   let logindata = localStorage.getItem("logindata");
-  console.log("logindata -----", logindata);
+  // console.log("logindata -----", logindata);
   if (logindata) {
     return JSON.parse(localStorage.getItem("logindata"));
   } else {

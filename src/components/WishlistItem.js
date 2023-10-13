@@ -17,8 +17,12 @@ const WishlistItem = ({
   slug,
   wholesale_price,
 }) => {
+  console.log("🚀 ~ file: WishlistItem.js:20 ~ image:", image)
   const { userid, isLogin } = useUserContext();
-  const { addToWishlist } = useWishlistContext();
+  const { addToWishlist, removeItemWishlist } = useWishlistContext();
+  // console.log("🚀 ~ file: WishlistItem.js:20 ~ wholesale_price:", wholesale_price)
+  // console.log("🚀 ~ file: WishlistItem.js:22 ~ addToWishlist:", id)
+  // console.log("🚀 ~ file: WishlistItem.js:22 ~ addToWishlist:", price)
 
   return (
     <Wrapper>
@@ -26,7 +30,8 @@ const WishlistItem = ({
         <img src={image} alt={name} />
         <div>
           <h5 className="name">{name}</h5>
-          <Link to={`/products/${slug}`} className="btn">
+          {/* <Link to={`/products/${slug}`} className="btn"> */}
+          <Link to={`/products/${slug}/abc/0`} className="btn">
             Details
           </Link>
           {/* <p className="color">
@@ -47,9 +52,8 @@ const WishlistItem = ({
             product_id: id,
             customer_id: userid,
           };
-          addToWishlist(id, params, 2, id);
-        }}
-      >
+          removeItemWishlist(id, params, 2, id);
+        }}>
         <FaTrash />
       </button>
     </Wrapper>
@@ -85,8 +89,12 @@ const Wrapper = styled.article`
     gap: 1rem;
   }
   img {
-    width: 100%;
-    height: 100%;
+    height: 100px;
+    width: 100px;
+    ${
+      "" /* width: 100%;
+    height: 100%; */
+    }
     display: block;
     border-radius: var(--radius);
     object-fit: cover;
@@ -143,6 +151,12 @@ const Wrapper = styled.article`
     font-size: 0.75rem;
     cursor: pointer;
   }
+  @media (max-width: 776px) {
+    .title {
+      margin-left:2rem;
+      gap: 3rem;
+    }
+  }
   @media (min-width: 776px) {
     .subtotal {
       display: block;
@@ -174,7 +188,7 @@ const Wrapper = styled.article`
     align-items: center;
     grid-template-rows: unset;
     img {
-      height: unset;
+      ${"" /* height: unset; */}
     }
     .title {
       height: 100%;

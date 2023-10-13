@@ -55,6 +55,8 @@ const products_reducer = (state, action) => {
       ...state,
       single_product_loading: false,
       single_product: action.payload,
+      defulte_size: action.payload.details[0].size_name,
+      inver_index: action.payload.details[0].inventory,
     };
   }
   if (action.type === GET_SINGLE_PRODUCT_ERROR) {

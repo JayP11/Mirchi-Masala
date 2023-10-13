@@ -4,6 +4,7 @@ import image_3 from "../assets/image_3.png";
 import image_4 from "../assets/image_4.png";
 import weblogo from "../assets/weblogo.png";
 import weblogo2 from "../assets/web_logo2.png";
+import ImageComingSoon from "../assets/imagecommingsoon.jpeg";
 // import image_5 from "../assets/image_5.png";
 // import image_6 from "../assets/image_6.png";
 // import image_7 from "../assets/image_7.png";
@@ -34,6 +35,8 @@ export default {
   image_4,
   weblogo,
   weblogo2,
+  ImageComingSoon,
+  
   // image_5,
   // image_6,
   // image_7,

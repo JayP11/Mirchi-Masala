@@ -1,41 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { SideBySideMagnifier } from "react-image-magnifiers";
 import styled from "styled-components";
+import IImages from "../constants/IImages";
 
-const ProductImages = ({ images = [{ url: "" }] }) => {
-
-  const [main, setMain] = useState(images[0]);
-  const [getMain, setMani] = useState(main.url);
+const ProductImages = ({ images = [{ image: "" }] }) => {
+    // const demoimage ="https://t4.ftcdn.net/jpg/05/81/84/71/360_F_581847176_eF540XqFGHDdGPZxyh5NtWHNzgs0XFk6.jpg";
+  const [main, setMain] = useState(
+    images.length <= 0 ? IImages.ImageComingSoon : images[0]
+  );
+  const [getMain, setMani] = useState(
+    images.length <= 0 ? IImages.ImageComingSoon : main.image
+  );
 
   useEffect(() => {
-    setMani(main.url);
+    // setMani(main.image);
+    setMani(images.length <= 0 ? IImages.ImageComingSoon : main.image);
     console.log("getMain", getMain);
+    console.log("Main", getMain);
   }, [main]);
 
   return (
     <Wrapper>
       <div className="gallery">
-        {images.map((image, index) => {
+        {images.map((imagee, index) => {
           return (
             <img
-              src={image.url}
-              // src={image}
-              // src=""
-              alt={image.image_type}
+              // src={imagee.image}
+              src={images.length <= 0 ? IImages.ImageComingSoon : imagee.image}
+              alt={imagee.image_type}
               key={index}
               onClick={() => setMain(images[index])}
-              className={`${image.url == main.url ? "active" : null}`}
+              className={`${imagee.image == main.image ? "active" : null}`}
             />
           );
         })}
       </div>
       {/* <div className="sing-main-img-flex"> */}
       {/* {console.log("main url is", main.url)} */}
-      <img src={main.url} alt="main image" className="main-image" />
+      {/* <img src={main.image} alt="main image" className="main-image" /> */}
       <SideBySideMagnifier
         alwaysInPlace={true}
-        imageSrc={main.url}
-
+        // imageSrc={main.image}
+        imageSrc={images.length <= 0 ? IImages.ImageComingSoon : main.image}
         interactionSettings={{ tapDurationInMs: 300 }}
         className="main-image"
       />
@@ -55,7 +61,7 @@ const Wrapper = styled.section`
   display: flex;
   .main-image {
     height: 500px;
-    max-width: calc(100% - 155px);
+    max-width: calc(100% - 200px);
     display: flex;
     width: unset !important;
     object-fit: contain;
@@ -64,9 +70,10 @@ const Wrapper = styled.section`
   }
   img {
     width: 100%;
+    height: 100%;
     display: block;
     border-radius: var(--radius);
-    object-fit: contain;
+    object-fit: cover;
   }
   .gallery {
     margin-top: 1rem;
@@ -97,7 +104,7 @@ const Wrapper = styled.section`
       width: 90px;
       cursor: pointer;
       margin-bottom: 20px;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
   .active {
@@ -129,6 +136,7 @@ const Wrapper = styled.section`
     flex-direction: column-reverse;
     max-width: 50%;
     flex: 0 0 50%;
+
     .main-image {
       width: 100% !important;
       max-width: 100%;
@@ -140,6 +148,7 @@ const Wrapper = styled.section`
       overflow-x: scroll !important;
       max-height: unset;
       max-width: 100%;
+      ${"" /* gap: 3rem; */}
       img {
         height: 150px !important;
         margin: 10px;
@@ -176,13 +185,13 @@ const Wrapper = styled.section`
 
   @media screen and (max-width: 1920px) {
     .main-image {
-      height: 580px;
+      height: 480px;
     }
   }
 
   @media screen and (max-width: 450px) {
     .main-image {
-      height: 400px;
+      ${"" /* height: 400px; */}
     }
   }
 `;

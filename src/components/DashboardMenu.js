@@ -59,7 +59,7 @@ const DashboardMenu = (props) => {
               <FaTicketAlt /> Raise Ticket
             </a>
           </li>
-          <li>
+          {/* <li>
             <a
               href="javascript:void(0)"
               onClick={() => props.changeTab(NOTIFICAION_TAB)}
@@ -67,7 +67,7 @@ const DashboardMenu = (props) => {
             >
               <FaBell /> Notification
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </Wrapper>

@@ -73,7 +73,7 @@ const filter_reducer = (state, action) => {
       color,
       wholesale_price,
     } = state.filters;
-    console.log(state.filters);
+    // console.log(state.filters);
     let tempProducts = [...all_products];
     //---------- filtering -----------
     //text
