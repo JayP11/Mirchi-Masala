@@ -40,7 +40,7 @@ const WishlistItem = ({
           </p> */}
         </div>
       </div>
-      <h5 className="price">{formatPrice(wholesale_price)}</h5>
+      <h5 className="price">{formatPrice(price)}</h5>
       {/* <h5 className="price">{formatPrice(wholesale_price)}</h5> */}
 
       <button

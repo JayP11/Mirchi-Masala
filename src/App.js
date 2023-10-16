@@ -24,7 +24,7 @@ import CancellationRefund from "./pages/CancellationRefund";
 function App() {
   return (
     <AuthWrapper>
-      <Router basename={"mm"}>
+      <Router basename={"/mm"}>
         <Sidebar />
         <Switch>
           <Route exact path="/">

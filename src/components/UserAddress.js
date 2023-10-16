@@ -76,10 +76,10 @@ const UserAddress = (props) => {
       getStates(params);
     }
   }, [get_countrylist]);
-  console.log(
-    "🚀 ~ file: UserAddress.js:73 ~ UserAddress ~ get_countrylist:",
-    get_countrylist
-  );
+  // console.log(
+  //   "🚀 ~ file: UserAddress.js:73 ~ UserAddress ~ get_countrylist:",
+  //   get_countrylist
+  // );
 
   const mDeleteAddress = async (id) => {
     let formData = new FormData(); //formdata object
@@ -121,12 +121,13 @@ const UserAddress = (props) => {
   const re = /^[A-Za-z]+$/;
   const mAddAddress = async () => {
     if (firstname == "") {
-      Notification("error", "Error!", "Please enter first name!");
+      Notification("error", "Error!", "Please enter full name!");
       return;
-    } else if (re.test(firstname) == false) {
-      Notification("error", "Error!", "Please enter valid  firstname");
-      return;
-    }
+    } 
+    // else if (re.test(firstname) == false) {
+    //   Notification("error", "Error!", "Please enter valid  firstname");
+    //   return;
+    // }
 
     if (mobile == "") {
       Notification("error", "Error!", "Please enter mobile number!");

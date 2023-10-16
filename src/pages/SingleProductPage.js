@@ -175,7 +175,8 @@ const SingleProductPage = () => {
       <PageHero title={name} product />
       <div
         className="section section-center page"
-        style={{ paddingTop: "30px" }}>
+        style={{ paddingTop: "30px" }}
+      >
         <Link to="/products" className="btn-back-to-product">
           back to products
         </Link>
@@ -255,7 +256,8 @@ const SingleProductPage = () => {
                           SetCondition(true);
                           handleButtonClick(index);
                           //  setMain(inventory[index])
-                        }}>
+                        }}
+                      >
                         {item.size_name}
                       </button>
                     </div>
@@ -294,7 +296,8 @@ const SingleProductPage = () => {
                     style={{ textAlign: "justify" }}
                     dangerouslySetInnerHTML={{
                       __html: description,
-                    }}></p>
+                    }}
+                  ></p>
                 </p>
                 <hr />
               </div>
@@ -323,12 +326,24 @@ const SingleProductPage = () => {
             <div className="userinfo">
               <p>Need help placing your order?</p>
               <ul>
-                <li>
-                  <FaWhatsapp />
+                <li
+                  style={{
+                    display: "flex",
+                    gap: "0.4rem",
+                    alignItems: "center",
+                  }}
+                >
+                  <FaWhatsapp  style={{height: "20px"}}/>
                   <span>Call or WhatsApp us at +91 75758 11223</span>
                 </li>
-                <li>
-                  <FaMailBulk />
+                <li
+                  style={{
+                    display: "flex",
+                    gap: "0.4rem",
+                    alignItems: "center",
+                  }}
+                >
+                  <FaMailBulk style={{height: "20px"}}/>
                   <span>E-mail us at theapplified@gmail.com</span>
                 </li>
               </ul>
@@ -598,8 +613,8 @@ const Wrapper = styled.main`
     ${"" /* margin: 0 0 6px 0; */}
     margin: 0;
     color: #686868;
-    letter-spacing: 0.2em;
-    font-size: 18px;
+    ${'' /* letter-spacing: 0.2em; */}
+    font-size: 16px;
   }
   .userinfo li {
     color: #686868;
@@ -659,17 +674,14 @@ const Wrapper = styled.main`
   }
 
   .info_last {
-    ${"" /* margin-top: 14px; */}
-    ${"" /* display: grid; */}
     display: flex;
     gap: 0.5rem;
-    ${"" /* grid-template-columns: 125px 1fr; */}/* width: 450px; */
   }
 
   .description-part-main {
     /* margin-top: 80px; */
     /* max-width: 1140px; */
-    padding-top: 10px;
+    ${"" /* padding-top: 10px; */}
   }
 
   .description-part {
@@ -717,7 +729,7 @@ const Wrapper = styled.main`
           width: 100%;
           gap: 0px;
           .cart-btn {
-            margin: 0 0 20px 0;
+            ${"" /* margin: 0 0 20px 0; */}
             width: 100%;
           }
 

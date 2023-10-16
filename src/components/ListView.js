@@ -15,7 +15,7 @@ const ListView = ({ products }) => {
           product;
         console.log("product is", product);
         return (
-          <article key={id}>
+          <article key={id} className="main_box">
             <Link to={`/products/${slug}/abc/0`}>
               <img
                 src={
@@ -55,8 +55,10 @@ const Wrapper = styled.section`
   img {
     width: 100%;
     display: block;
-    width: 300px;
-    height: 300px;
+    ${'' /* width: 300px;
+    height: 300px; */}
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: var(--radius);
     margin-bottom: 1rem;
@@ -89,6 +91,13 @@ const Wrapper = styled.section`
       grid-template-columns: auto 1fr;
       column-gap: 2rem;
       align-items: center;
+    }
+  }
+  @media (max-width: 992px) {
+    .main_box{
+      gap:1rem;
+      flex-direction: row;
+      display:flex;
     }
   }
   @media (max-width: 767px) {

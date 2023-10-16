@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { AiFillCloseCircle } from "react-icons/ai";
+
 import {
   FaCheck,
   FaFileInvoice,
@@ -16,6 +18,7 @@ import axios from "axios";
 import { get_order_details_url } from "../utils/constants";
 import { Radio } from "antd";
 import Notification from "../utils/Notification";
+import { formatPrice } from "../utils/helpers";
 
 const MyOrders = () => {
   const {
@@ -26,6 +29,10 @@ const MyOrders = () => {
     returnOrder,
     downloadInvocie,
   } = useOrderContext();
+  console.log(
+    "🚀 ~ file: MyOrders.js:32 ~ MyOrders ~ my_order_list:",
+    my_order_list
+  );
   const { isLogin, logintoken } = useUserContext();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [openCancelModal, setCancelMOdal] = React.useState(false);
@@ -162,7 +169,9 @@ const MyOrders = () => {
                         <tr>
                           <td>{item.created_at}</td>
                           <td>{item.order_number}</td>
-                          <td>{item.formated_total_price}</td>
+                          {/* <td>{item.formated_total_price}</td> */}
+                          {/* <td>{formatPrice(item.formated_total_price)}</td> */}
+                          <td>{formatPrice(item.formated_total_price)}</td>
                           {item.order_status_id == "1" ? (
                             <td className="cancelled_order">Waiting</td>
                           ) : item.order_status_id == "2" ? (
@@ -230,13 +239,16 @@ const MyOrders = () => {
         contentLabel="Example Modal"
       >
         <Innermodal>
-          <button classNameName="close-button" onClick={closeModal}>
-            X
-          </button>
+          {/* <button className="close-button" onClick={closeModal}> */}
+          <AiFillCloseCircle
+            style={{ width: "17px", cursor: "pointer" }}
+            onClick={closeModal}
+          />
+          {/* </button> */}
           <div classNameName="checkout-page contact-page">
             {orderDetailsObject ? (
               <div classNameName="cart-table-container">
-                <ul classNameName="checkout-progress-bar">
+                {/* <ul classNameName="checkout-progress-bar">
                   <li
                     classNameName={
                       orderDetailsObject.order_status_id &&
@@ -254,38 +266,35 @@ const MyOrders = () => {
                         : ""
                     }
                   >
-                    {" "}
-                    <span>Waiting</span>{" "}
+                    <span>Waiting</span>
                   </li>
                   <li>
-                    {" "}
-                    <span>Preparing</span>{" "}
+                    <span>Preparing</span>
                   </li>
                   <li>
-                    {" "}
-                    <span>On the way</span>{" "}
+                    <span>On the way</span>
                   </li>
                   <li>
-                    {" "}
-                    <span>Completed</span>{" "}
+                    <span>Completed</span>
                   </li>
-                </ul>
+                </ul> */}
                 <div classNameName="row">
                   <div classNameName="col-md-6">
                     <h3>
                       Order Number:{" "}
                       <span classNameName="red-color">
-                        {" "}
                         {orderDetailsObject &&
                         orderDetailsObject &&
                         orderDetailsObject.order_number
                           ? orderDetailsObject.order_number
-                          : "Naswis User"}
+                          : ""}
                       </span>
                     </h3>
-                    <h4>Delivery Address</h4>
+                    {/* <h4>Delivery Address</h4> */}
                     <p>
-                      <span classNameName="bold-fonts">Order Status: </span>
+                      <span classNameName="bold-fonts">
+                        <b>Order Status: </b>
+                      </span>
                       {orderDetailsObject.order_status_id &&
                       orderDetailsObject.order_status_id == "1"
                         ? "Waiting"
@@ -307,12 +316,11 @@ const MyOrders = () => {
                         : ""}
                     </p>
                     <p>
-                      {" "}
                       <span
                         classNameName="bold-fonts"
                         style={{ fontWeight: "bold" }}
                       >
-                        Address:{" "}
+                        Address:
                       </span>
                       <br /> {orderDetailsObject.shipping_fullname}
                       <br />
@@ -327,48 +335,58 @@ const MyOrders = () => {
                       {orderDetailsObject.shipping_country_name}
                     </p>
                     <p>
-                      <span classNameName="bold-fonts">Date: </span>{" "}
+                      <span classNameName="bold-fonts">
+                        <b>Date: </b>
+                      </span>{" "}
                       {orderDetailsObject.created_at}
                     </p>
-                    <p>
+                    {/* <p>
                       <span classNameName="bold-fonts">Time Slot: </span> 08:00AM -
                       08:00PM
-                    </p>
+                    </p> */}
                   </div>
                 </div>
                 <div>
-                  <div classNameName="card card_bg_color">
+                  {/* <div classNameName="card card_bg_color">
                     <div classNameName="card-header"> Category Name 01 </div>
-                  </div>
+                  </div> */}
                   {orderDetailsObject &&
                   orderDetailsObject.order_lines &&
                   orderDetailsObject.order_lines.length > 0
                     ? orderDetailsObject.order_lines.map((item, index) => {
                         return (
                           <div>
-                            <table classNameName="table">
-                              <tbody>
-                                <tr>
+                            <table classNameName="table" style={{width:"100%"}}>
+                              <tbody style={{ border: "2px solid" }}>
+                                <tr
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    padding: "0.5rem",
+                                  }}
+                                >
                                   <td classNameName="product-col">
                                     <figure classNameName="product-image-container">
                                       <a
                                         href="javascript:void(0)"
                                         classNameName="product-image"
                                       >
-                                        {" "}
-                                        <img
+                                        {/* <img
                                           src={item.product_image}
                                           alt="product"
-                                        />{" "}
+                                        /> */}
                                       </a>
                                     </figure>
-                                    <h2 classNameName="product-title">
-                                      <p>Brand Name</p>
+                                    <h5
+                                      classNameName="product-title"
+                                      style={{ display: "flex" }}
+                                    >
+                                      <h5>Product Name :</h5>
                                       <a href="javascript:void(0)">
                                         {item.product_name}
                                       </a>
-                                    </h2>
-                                    <div classNameName="ratings-container">
+                                    </h5>
+                                    {/* <div classNameName="ratings-container">
                                       <div classNameName="product-ratings">
                                         {" "}
                                         <span classNameName="ratings">
@@ -390,25 +408,34 @@ const MyOrders = () => {
                                           ></i>
                                         </span>
                                       </div>
-                                    </div>{" "}
+                                    </div>{" "} */}
                                     <span>
                                       <a href="#" classNameName="btn-move">
-                                        {" "}
                                         Rate &amp; Review Product
-                                      </a>{" "}
-                                      |{" "}
+                                      </a>
                                       <a href="#" classNameName="btn-move">
-                                        {" "}
                                         Return
                                       </a>
-                                    </span>{" "}
+                                    </span>
                                   </td>
-                                  <td>
-                                    <span>₹{item.price}</span> +{" "}
+                                  <td style={{display:"flex",gap:"2rem"}}>
+                                    <div>
+                                      <b>Price : </b>
+                                      <span>{formatPrice(item.price)}</span>
+                                    </div>
+                                    <div>
+                                    <b>Quantity : </b>
+                                    {item.total_quantity}
+                                    </div>
+                                  </td>
+                                  {/* <td>
+                                    <span>₹{item.price}</span> *
+                                    <span>{formatPrice(item.price)}</span> *
                                     {item.incentive_point} (IP) X{" "}
                                     {item.total_quantity}
-                                  </td>
-                                  <td>₹{item.total_price}</td>
+                                  </td> */}
+                                  {/* <td>₹{item.total_price}</td> */}
+                                  <td>{formatPrice(item.total_price)}</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -422,23 +449,25 @@ const MyOrders = () => {
                     <tbody>
                       <tr>
                         <td>
-                          <b>SUB TOTAL</b>
+                          <b>SUB TOTAL : </b>
                         </td>
                         <td>
-                          <b>₹{orderDetailsObject.total_price}</b>
+                          {/* <b>₹{orderDetailsObject.total_price}</b> */}
+                          <b>{formatPrice(orderDetailsObject.total_price)}</b>
                         </td>
                       </tr>
-                      <tr>
+                      {/* <tr>
                         <td>
                           <b>DELIVERY CHARGES</b>
                         </td>
                         <td>
                           <b>₹{orderDetailsObject.cod_charges}</b>
+                          <b>{formatPrice(orderDetailsObject.cod_charges)}</b>
                         </td>
-                      </tr>
+                      </tr> */}
                       <tr>
                         <td>
-                          <b>PAYMENT TYPE</b>
+                          <b>PAYMENT TYPE : </b>
                         </td>
                         <td>
                           <b style={{ textTransform: "uppercase" }}>
@@ -472,7 +501,10 @@ const MyOrders = () => {
           <div classNameName="checkout-page contact-page cancel-modal">
             {orderDetailsObject ? (
               <div classNameName="modal_main_div">
-                <div classNameName="submit_frm row" style={{ marginTop: "20px" }}>
+                <div
+                  classNameName="submit_frm row"
+                  style={{ marginTop: "20px" }}
+                >
                   <button
                     onClick={() => selectAllDefult()}
                     type="button"
@@ -500,7 +532,7 @@ const MyOrders = () => {
                                 <img src={item.product_image} alt="" />
                               </div>
                               <div classNameName="cart_content">
-                                <h3>{item.product_name}</h3>
+                                <h5>{item.product_name}</h5>
                                 <p>
                                   ₹{item.price}{" "}
                                   <span>
@@ -533,7 +565,10 @@ const MyOrders = () => {
                     })
                   : null}
                 <div classNameName="submit_frm">
-                  <div classNameName="submit_frm row" style={{ marginTop: "20px" }}>
+                  <div
+                    classNameName="submit_frm row"
+                    style={{ marginTop: "20px" }}
+                  >
                     <button
                       onClick={() => _returnFullOrder()}
                       type="button"
@@ -612,15 +647,18 @@ const Wrapper = styled.div`
                   height: 35px;
                   border-radius: 60px;
                   margin-right: 4px;
-                  padding: 6px;
-                  border: 1px solid var(--clr-primary-5);
+                  padding: 7px;
+                  ${"" /* border: 1px solid var(--clr-primary-5); */}
+                  border: 1px solid var(--clr-primary-darkred);
                   background-color: #fff;
                   float: left;
                   text-align: center;
                   display: block;
-                  color: var(--clr-primary-5);
+                  ${"" /* color: var(--clr-primary-5); */}
+                  color: var(--clr-primary-indianred);
                   :hover {
-                    background: var(--clr-primary-5);
+                    ${'' /* background: var(--clr-primary-5); */}
+          background: var(--clr-primary-darkred);
                     color: #fff;
                   }
                 }
@@ -637,6 +675,7 @@ const Wrapper = styled.div`
       }
     }
   }
+
   .wallet_inside {
     width: 100%;
     display: inline-block;
@@ -735,7 +774,7 @@ const Wrapper = styled.div`
           padding: 10px 40px;
           text-align: center;
           border: none;
-          font-size: 16px;
+          ${"" /* font-size: 16px; */}
           text-transform: uppercase;
           color: #fff;
           cursor: pointer;
@@ -841,7 +880,7 @@ const Wrapper = styled.div`
   }
   @media screen and (max-width: 1200px) {
     table.table.table-hover {
-      min-width: 900px;
+      ${"" /* min-width: 900px; */}
     }
   }
 `;

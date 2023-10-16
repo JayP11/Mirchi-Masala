@@ -135,7 +135,7 @@ const LoginModule = ({ showscreen, setShowlogin }) => {
                   <form>
                     <div className="input-row">
                       <FaEnvelope />
-                      <label>Email Address</label>
+                      <label style={{ textAlign: "left" }}>Email Address</label>
                       <input
                         type="text"
                         placeholder=""
@@ -145,7 +145,7 @@ const LoginModule = ({ showscreen, setShowlogin }) => {
                     </div>
                     <div className="input-row">
                       <FaLock />
-                      <label>Password</label>
+                      <label style={{ textAlign: "left" }}>Password</label>
                       <input
                         type="password"
                         placeholder=""
@@ -468,6 +468,7 @@ const Wrapper = styled.div`
     padding: 15px 0 20px 0;
   }
   .login-button button {
+    width: 170px;
     border: none;
     background: transparent;
     border-radius: 182px;
@@ -482,7 +483,7 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button.btn-login {
-    ${'' /* background: var(--clr-primary-5); */}
+    ${"" /* background: var(--clr-primary-5); */}
     background: var(--clr-primary-darkred);
     color: #fff;
     transition: all 0.5s ease;
@@ -493,7 +494,7 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
   .login-button button:hover {
-    ${'' /* background: var(--clr-primary-5); */}
+    ${"" /* background: var(--clr-primary-5); */}
     color: #fff;
     transition: all 0.5s ease;
   }
@@ -548,13 +549,14 @@ const Wrapper = styled.div`
     background: #fff;
     max-width: 1190px;
     padding: 40px 0 40px 0;
-    margin: 0 auto;
+    ${"" /* margin: 0 auto; */}
+    margin: 0 2rem;
     border-radius: 10px;
   }
   .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     background: #fff;
     box-shadow: 0px 0px 10px 0px rgb(0 0 0/0.2);
     width: 30px;
@@ -575,6 +577,14 @@ const Wrapper = styled.div`
     .loging-container {
       overflow-y: scroll;
       height: 100%;
+    }
+  }
+  @media screen and (max-width: 503px) {
+    .login-button {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
     }
   }
 `;

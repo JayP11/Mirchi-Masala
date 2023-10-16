@@ -153,13 +153,13 @@ const AddToCart = ({ product, value, sizeValue, getstock }) => {
           })}
         </div>
       </div> */}
-      <p className="info">
-        {/* <span>Available : </span>s */}
-        {/* <h5>{stockAvail > 0 ? "In Stock" : "Out of Stock"}</h5> */}
+      {/* <p className="info">
+        <span>Available : </span>
+        <h5>{stockAvail > 0 ? "In Stock" : "Out of Stock"}</h5> 
 
-        {/* {stock > 0 ? "In Stock" : "Out of Stock"} */}
-        {/* {details[0].inventory > 0 ? "In Stock" : "Out of Stock"} */}
-      </p>
+        {stock > 0 ? "In Stock" : "Out of Stock"} 
+        {details[0].inventory > 0 ? "In Stock" : "Out of Stock"} 
+      </p> */}
       {/* <p className="info">
         <span>SKU : </span>
         {product_code}
@@ -196,7 +196,7 @@ const AddToCart = ({ product, value, sizeValue, getstock }) => {
         </div>
       )}
       {/* amount button */}
-      <div className="btn-container"></div>
+      {/* <div className="btn-container"></div> */}
     </Wrapper>
   );
 };
